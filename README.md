@@ -1,5 +1,4 @@
 # README
-# <ここにアプリ名を入力>
 
 IroDory
 
