@@ -1,24 +1,46 @@
 # README
+# <ここにアプリ名を入力>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+IroDory
 
-Things you may want to cover:
+## サイト概要
 
-* Ruby version
+塗り絵素材の提供と投稿サイト
 
-* System dependencies
+### サイトテーマ
 
-* Configuration
+線画素材を初心者ユーザに提供することで、『描くこと』の敷居を下げて楽しさを学んでほしい
 
-* Database creation
+### テーマを選んだ理由
 
-* Database initialization
+学生時代「線を描くのがやや苦手で色塗りの方が捗る」という人が自分を含め多かった。
+素材を提供してもらいその素材で絵を描くことの楽しさを学んでほしい。
 
-* How to run the test suite
+### ターゲットユーザ
 
-* Services (job queues, cache servers, search engines, etc.)
+イラストを学びたいが人や背景など描いたことがない超初心者
+絵は描くが背景などに自身がない中級者向け
 
-* Deployment instructions
+### 主な利用シーン
 
-* ...
+線画素材を提供をし、完成した絵を投稿、ランキングなどを表示する
+(4 か月以降)AI 導入後は画像認識機能を活用し、アップされた画像が素材を使用していることを確認し投稿完了となる
+
+## 設計書
+
+## チャレンジ要素一覧
+
+https://docs.google.com/spreadsheets/d/1Uuz-DT0ioGQSSb5PnIrBFqG1SuJ9H4PRW0OiJo9vmLo/edit#gid=0
+
+## 開発環境
+
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JS ライブラリ：jQuery
+- IDE：Cloud9
+
+## 使用素材
+
+- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名と URL を明記してください。
+- 使用しない場合は、使用素材の項目を README から削除してください。
