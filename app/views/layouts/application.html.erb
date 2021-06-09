@@ -1,15 +1,24 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charaset="UTF-8" />
+    <script src="https://kit.fontawesome.com/126ca43df6.js" crossorigin="anonymous"></script>
     <title>IroDory</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css">
+    
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <%= render 'layouts/header' %>
+    <main>
+      <%= yield %>
+    </main>
+    
   </body>
 </html>
