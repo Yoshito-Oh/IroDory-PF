@@ -10,11 +10,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_08_011224) do
+ActiveRecord::Schema.define(version: 2021_06_09_064111) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email"
     t.string "password"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "item_images", force: :cascade do |t|
+    t.integer "tag_id"
+    t.string "item_title"
+    t.text "item_introduction"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "material_images", force: :cascade do |t|
+    t.integer "tag_id"
+    t.string "mate_title"
+    t.text "mate_introducution"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "post_images", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "tag_id"
+    t.string "title"
+    t.text "img_introduction"
+    t.string "art_supplies"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "tag_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -27,6 +62,11 @@ ActiveRecord::Schema.define(version: 2021_06_08_011224) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name", default: "", null: false
+    t.text "introduction"
+    t.string "status"
+    t.boolean "sex"
+    t.string "Country"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

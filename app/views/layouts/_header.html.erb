@@ -1,7 +1,7 @@
 <header>
   <nav class="navber navber-expand-lg header">
     <div class="container">
-      <a class="title-logo" href="/"><%= image_tag('logo.jpg')%></a>
+      <a class="title-logo" href="/"><%#= image_tag('logo.jpg')%></a>
       <nav>
         <ul class="nav nav-pills">
           <% if user_signed_in? %><!--会員ログインしていた場合-->
@@ -10,14 +10,14 @@
             <p><%= user.name %>さん</p>
             <%= link_to attachment_image_tag(user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg") %>
 
-          <% elsif admin_signed_in? %> <!--管理者ログインしていた場合-->
+          <%# elsif admin_signed_in? %> <!--管理者ログインしていた場合-->
             <li class="nav-item"><%= link_to "承認待機一覧" %></li>
             <li class="nav-item"><%= link_to "ユーザ一覧" %></li>
             <li class="nav-item"><%= link_to "素材線画一覧" %></li>
             <li class="nav-item"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
           <% else %>
             <!--検索するテキストボックスと『検索』ボタン-->
-            <li class="nav-item"><%= link_to "About" %>about</li>
+            <li class="nav-item"><%= link_to "About" %></li>
             <li class="nav-item"><%= link_to "ログイン" %></li>
             <li class="nav-item"><%= link_to "新規登録" %></li>
 
