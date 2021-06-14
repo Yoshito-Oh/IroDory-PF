@@ -7,8 +7,8 @@
           <% if user_signed_in? %><!--会員ログインしていた場合-->
             <!--検索するテキストボックスと『検索』ボタン-->
             <li class="nav-item">詳細検索</li><!--link_toで詳細画面を追加する-->
-            <p><%= user.Nickname %>さん</p>
-            <%= link_to attachment_image_tag(user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg") %>
+            <p><%= current_user.nickname %>さん</p>
+            <%#= link_to attachment_image_tag(current_user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg") %>
 
           <% elsif admin_signed_in? %> <!--管理者ログインしていた場合-->
             <li class="nav-item"><%= link_to "承認待機一覧" %></li>
