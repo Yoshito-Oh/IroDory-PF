@@ -1,0 +1,30 @@
+<div class="new_item_image">
+  <%= form_with(model: @item_image, url: admin_item_images_path) do |f| %>
+    <%= f.attachment_field :image %>
+    <table class="item-string">
+      <tr>
+        <td><p>タイトル</p></td>
+        <td><%= f.text_field :item_title %></td>
+      </tr>
+      <tr>
+        <td><p>登録タグ</p></td>
+        <td>
+          <%#= f.tag%>
+        </td>
+      </tr>
+    </table>
+    <p>説明文</p>
+    <%= f.text_area :item_introducution %>
+    <br />
+    <div class="form-group">
+      <% if item_image.item_title.blank? %> 
+      <!--新規登録の場合-->
+        <%= f.submit "新規登録", class: 'btn btn-success' %>
+      <% else %>
+      <!--編集の場合-->
+        <%= f.submit "更新", class: 'btn btn-success'%>
+      <% end %>
+    </div>
+    
+  <% end %>
+</div>

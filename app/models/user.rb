@@ -7,10 +7,14 @@ class User < ApplicationRecord
   #個人のプロフィールにおけるバリデーション=========================       
   validates :name, presence: true
   validates :nickname, presence: true
-  validates :introduction, {presence: true, length: {maximum: 250}}
+  validates :introduction, {length: {maximum: 250}}
   validates :sex, inclusion: {in: [true, false]}
   #country, は除く
   
   #=================================================================
+  
+  #アソシエーション--------------------------
+  has_many :post_images
+  #------------------------------------------
   
 end

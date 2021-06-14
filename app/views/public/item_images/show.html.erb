@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3">
+      <!--マイページリンク-->
+      <div class="profile_image">
+        <%#= attachment_image_tag (プロフィール画像)%>
+        <%= @post_image.user.name %>
+      </div>
+      <% if user_signed_in? %>
+      <!--投稿した人の自己紹介とほかの作品が表示される-->
+      <% else %>
+      <!--ログインと新規登録を促す-->
+      <div class="loginsignin">
+        <p>会員登録して多くの作品を見よう！</p>
+        <%= link_to "ログイン", new_user_session_path class: "btn btn-primary" %>
+        <%= link_to "新規登録", new_user_registration_path class: "btn btn-success"%>
+      </div>
+      <% end %>
+    </div>
+    <div class="col-lg-9">
+      <div class="image_introduction">
+        <!--タイトルと説明文を表示-->
+        <h3><%= @post_image.title %></h3>
+        <p><%= @post_image.introduction %></p>
+      </div>
+      <div class="tag_list" style="display:inline-block;">
+        <!--タグを表示する-->
+      </div>
+      
+      <div class="post_image">
+        <!--タグで投稿絵と線画素材を切り替える-->
+        <ul class="nav nav-pills nav-fill">
+          <li class="nav-item">
+            <a class="nav-link active">投稿絵</a>
+            <%= attachment_image_tag @post_image, :image, height: "500", "no_image.jpg" %>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active">線画素材</a>
+            <%= attachment_image_tag @item_image, :image, height: "500", "no_image.jpg" %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

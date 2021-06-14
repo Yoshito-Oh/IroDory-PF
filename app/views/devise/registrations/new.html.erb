@@ -4,18 +4,31 @@
   <%= render "devise/shared/error_messages", resource: resource %>
   
   <div class="field">
-    <%= f.label :name %><br />
+    <%= f.label :"お名前" %><br />
     <%= f.text_field :name, autofocus: true %>
   </div>
-
   
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :"ニックネーム(※ほかのユーザーにはこちらの名前で表示されます。)" %><br />
+    <%= f.text_field :nickname, autofocus: true %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :"性別" %><br />
+    <%= f.radio_button :sex, :true %>
+    <%= f.label :sex, "男", {value: true, style: "display: inline-block;" }%>
+    
+    <%= f.radio_button :sex, :false  %>
+    <%= f.label :sex, "女", {value: false, style: "display: inline-block;" }%>
+  </div>
+  
+  <div class="field">
+    <%= f.label :"メールアドレス" %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
   <div class="field">
-    <%= f.label :password %>
+    <%= f.label :"パスワード" %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
@@ -23,12 +36,12 @@
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label :"パスワードの再入力" %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "新規登録" %>
   </div>
 <% end %>
 

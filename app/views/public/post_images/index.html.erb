@@ -1,7 +1,31 @@
+<h1>投稿されたイラスト一覧</h1>
+<h2>(新着一覧ページ)</h2>
 <div class="container">
   <div class="row">
-    <div class="col">
-      <p>indexページ</p>
+    <div class="col-lg-3">
+      <!--未ログインの場合-->
+      
+      <!--ログイン後の場合-->
     </div>
+    <div class="col-lg-9">
+      <!--新着一覧イラストが並ぶ-->
+      <div class="item-list">
+        <% @post_images.each do |post_image| %>
+          <div class="post_image_link" style="display:inline-block">
+            <div class="post_image_name_title", style="text-align:center">
+              <%= link_to public_post_image_path(post_image.id) do %>
+                <%= attachment_image_tag post_image, :image, height: "150", fallback: "no_image.jpg" %>
+                <%= post_image.title %>
+              <% end %>
+              <%= link_to post_image.name user_path() %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="paging">
+    <%= paginate @post_images %>
+    <!--ページ送り機能-->
   </div>
 </div>
