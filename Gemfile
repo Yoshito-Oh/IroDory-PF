@@ -74,13 +74,15 @@ gem "refile-mini_magick"
 gem 'kaminari','~> 1.2.1'
 #=============================
 
-#Bootstrapの導入===========================
+#Bootstrapの導入===================
 gem 'bootstrap', '~> 4.5'
 gem 'jquery-rails'
 gem 'font-awesome-sass', '~> 5.13'
-#===========================================
+#==================================
 
+#デプロイに使用=======
 gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
 end
+#=====================

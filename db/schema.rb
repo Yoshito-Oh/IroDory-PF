@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_09_064111) do
+ActiveRecord::Schema.define(version: 2021_06_15_050745) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2021_06_09_064111) do
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image_id"
   end
 
   create_table "post_images", force: :cascade do |t|
@@ -59,6 +60,7 @@ ActiveRecord::Schema.define(version: 2021_06_09_064111) do
     t.text "introduction"
     t.string "status"
     t.string "Country"
+    t.integer "profile_image"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

@@ -1,7 +1,7 @@
 class PostImage < ApplicationRecord
-  attachment :image
+  attachment :post_image
   #バリデーション==================
-  validates :title, presence: true
+  validates :post_title, presence: true
   
   #================================
   

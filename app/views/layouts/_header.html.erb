@@ -6,10 +6,17 @@
         <ul class="nav nav-pills" >
           <% if user_signed_in? %><!--会員ログインしていた場合-->
             <!--検索するテキストボックスと『検索』ボタン-->
-            <li class="nav-item">詳細検索</li><!--link_toで詳細画面を追加する-->
-            <p><%= current_user.nickname %>さん</p>
-            <%#= link_to attachment_image_tag(current_user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg") %>
-
+            
+            <div class="current_user_header" style="display:inline-block;">
+              <li class="nav-item">詳細検索</li><!--link_toで詳細画面を追加する-->
+              
+              <%= link_to public_user_path(current_user.id) do %>
+                <li class="nav-item"><%= attachment_image_tag(current_user, :profile_image, height: "50", fallback: "no_image.jpg") %></li>
+                <li class="nav-item"><p><%= current_user.nickname %>さん</p></li>
+              <% end %>
+              <!--deviseで追加している場合は「current_user」でよい-->
+              <li class="nav-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+            </div>
           <% elsif admin_signed_in? %> <!--管理者ログインしていた場合-->
             <li class="nav-item"><%= link_to "承認待機一覧" %></li>
             <li class="nav-item"><%= link_to "ユーザ一覧" %></li>
@@ -18,8 +25,8 @@
           <% else %>
             <!--検索するテキストボックスと『検索』ボタン-->
             <p style="display:inline-block">こんにちは ゲストさん</p>
-            <li class="nav-item" style="display:inline-block"><%= link_to "ログイン",new_user_session_path, class: "btn btn-primary" %></li>
-            <li class="nav-item" style="display:inline-block"><%= link_to "新規登録",new_user_registration_path, class: "btn btn-primary" %></li>
+            <li class="nav-item"><%= link_to "ログイン",new_user_session_path, class: "btn btn-primary" %></li>
+            <li class="nav-item"><%= link_to "新規登録",new_user_registration_path, class: "btn btn-primary" %></li>
 
           <% end %>
         </ul>

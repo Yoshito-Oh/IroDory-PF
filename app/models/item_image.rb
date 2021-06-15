@@ -3,10 +3,10 @@ class ItemImage < ApplicationRecord
   attachment :image
 
   #バリデーションの追加=========
-  validates :title, presence: true
-  validates :image, presence: true
-  validates :introducution, presence: true
-  validates :status, inclusion:{in: [true, false]}
+  #validates :item_title, presence: true
+  #validates :item_image, presence: true
+  #validates :item_introduction, presence: true
+  #validates :status, inclusion:{in: [true, false]}
   #============================
 
   #アソシエーション============

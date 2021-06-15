@@ -1,5 +1,5 @@
 <div class="new_item_image">
-  <%= form_with(model: @item_image, url: admin_item_images_path) do |f| %>
+  <%= form_with model: @item_image, url: admin_item_images_path, local: true do |f| %>
     <%= f.attachment_field :image %>
     <table class="item-string">
       <tr>
@@ -14,7 +14,7 @@
       </tr>
     </table>
     <p>説明文</p>
-    <%= f.text_area :item_introducution %>
+    <%= f.text_area :item_introduction %>
     <br />
     <div class="form-group">
       <% if item_image.item_title.blank? %> 
@@ -27,4 +27,5 @@
     </div>
     
   <% end %>
+  
 </div>
