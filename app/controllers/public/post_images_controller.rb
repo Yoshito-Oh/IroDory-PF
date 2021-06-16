@@ -9,6 +9,7 @@ class Public::PostImagesController < ApplicationController
   #新規登録画面==================================
   def new
     @post_image = PostImage.new
+    @item_image = ItemImage.find(params[:id])
   end
   def create
     @post_image = PostImage.new(post_image_params)

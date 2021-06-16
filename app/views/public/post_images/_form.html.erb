@@ -1,0 +1,36 @@
+<div class="new_item_image">
+  <p>使用する線画</p>
+  
+  <%= attachment_image_tag @item_image, :image, size: '300x300', format: 'png' %>
+  
+  <%= form_with model: @post_image, url: public_item_images_path, local: true do |f| %>
+  
+    <%#= f.attachment_field :image %>
+
+
+    <table class="item-string">
+      <tr>
+        <td><p>タイトル</p></td>
+        <td><%= f.text_field :title %></td>
+      </tr>
+      <tr>
+        <td><p>登録タグ</p></td>
+        <td>
+          <%#= f.tag%>
+        </td>
+      </tr>
+    </table>
+    <p>説明文</p>
+    <%= f.text_area :introduction %>
+    <br />
+    <div class="form-group">
+      <% if post_image.title.blank? %> 
+      <!--新規登録の場合-->
+        <%= f.submit "新規登録", class: 'btn btn-success' %>
+      <% else %>
+      <!--編集の場合-->
+        <%= f.submit "更新", class: 'btn btn-success'%>
+      <% end %>
+    </div>
+  <% end %>
+</div>

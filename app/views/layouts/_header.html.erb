@@ -8,7 +8,20 @@
             <!--検索するテキストボックスと『検索』ボタン-->
             
             <div class="current_user_header" style="display:inline-block;">
-              <li class="nav-item">詳細検索</li><!--link_toで詳細画面を追加する-->
+              <li class="nav-item"><%= link_to "素材一覧", public_item_images_path %></li>
+              <li class="nav-item"><%= link_to "投稿一覧", public_post_images_path %></li>
+              
+              <div class="dropdown">
+                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <%#= attachment_image_tag(current_user, :profile_image, height: "50", fallback: "no_image.jpg") %>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <%#= current_user.nickname, class: "dropdown-item" %>
+                  <%#= link_to "マイページ", public_user_path(current_user.id), class: "dropdown-item" %>
+                  <%#= link_to "ブックマーク", public_user_path(current_user.id), class: "dropdown-item" %>
+                  <%#= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+                </div>
+              </div>
               
               <%= link_to public_user_path(current_user.id) do %>
                 <li class="nav-item"><%= attachment_image_tag(current_user, :profile_image, height: "50", fallback: "no_image.jpg") %></li>
