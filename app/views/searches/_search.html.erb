@@ -1,0 +1,10 @@
+<div class="search_form" style="text-align:center">
+  <%= form_with url: searches_search_path, local:true, method: :get do |search| %>
+    <%= search.text_field :word %><!--検索ワード入力-->
+    <%= search.select :range, options_for_select([['投稿画像'], ['線画素材'],['ユーザ']]) %>
+    
+    <%= search.submit "簡易検索", class: "btn btn-secondary" %>
+    <%= link_to "詳細検索", searches_detail_path, class: "btn btn-outline-primary" %>
+  <% end %>
+  
+</div>

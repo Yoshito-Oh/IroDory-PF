@@ -1,18 +1,17 @@
 class Admin::UsersController < ApplicationController
  #(管理者側)ユーザー一覧====================
   def index
-    @users = Users.all
+    @users = User.all
   end
   #=========================================
   
   #管理者側のユーザ詳細画面=================
   def show
-    @user = User.find(params[:id])
+    @user = User.find_by(params[:id])
   end
 
   def edit
     @user = User.find(params[:id])
-    
   end
 
   def update

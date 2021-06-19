@@ -6,7 +6,7 @@ class PostImage < ApplicationRecord
   #================================
   
   #アソシエーション----------------
-  belongs_to :user
-  belongs_to :item_image
+  belongs_to :user, dependent: :destroy
+  belongs_to :item_image, dependent: :destroy
   #--------------------------------
 end

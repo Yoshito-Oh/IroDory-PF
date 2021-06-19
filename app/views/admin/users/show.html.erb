@@ -1,2 +1,77 @@
-<h1>Admin::Users#show</h1>
-<p>Find me in app/views/admin/users/show.html.erb</p>
+<!--プロフィールのヘッダーを入れる場所-->
+<div class="user_header" style="background-color:purple;height:250px;">
+  <p>profile_header</p>
+</div>
+      
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3">
+      <div class="profile_image" style="text-align:center">
+        <%= attachment_image_tag(@user, :profile_image, :size => "200x200", fallback: "no_image.jpg") %>
+          <!--フォロー・フォロワー数-->
+          <% if current_user.id == @user.id %>
+            <div class="user_button">
+              <%= link_to "編集", edit_public_user_path(current_user.id), class: "btn btn-outline-secondary w-75" %><br />
+            </div>
+            <div class="user_button">
+              <%= link_to "退会", edit_public_user_path(current_user.id), method: :destroy, class: "btn btn-outline-danger w-75" %>
+            </div>
+        
+          <%# else %>
+            <%# if current_user.following?(user) %>
+              <%#= link_to "フォロー中", user_relationships_path(user.id), class: "btn btn-info", method: :delete %>
+            <%# else %>
+            <%#= link_to "フォロー", user_relationships_path(user.id), class: "btn btn-info", method: :post %>
+          <%# end %>
+        <% end %>  
+      </div>
+    </div>
+    <div class="col-lg-9">
+      <table class="table">
+        <thead>
+          <tr class="table_head">user infomation</tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="bg-light">ユーザニックネーム</td>
+            <td class="bg-light"><%= @user.nickname %></td>
+          </tr>
+          <tr>
+            <td class="gn-light">自己紹介</td>
+            <td class="gn-light"><%= @user.introduction %></td>
+          </tr>
+          <tr>
+            <td class="bg-light">投稿枚数</td>
+            <td class="bg-light"><%= @user.post_images.count%></td>
+          </tr>
+          <tr>
+            <td>使用している画材</td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-lg-12">
+      <p style="text-align:center">-投稿一覧-</p>
+      <%# @post_images.each do |post_image| %>
+        <div class="post_image_list" style="display:inline-block;">
+          <%#= attachment_image_tag post_image, :image, :fill, 300, 300 %>
+          <%#= post_image.title %>
+          <p>表示/非表示</p>
+          <!--切り替えボタン-->
+        </div>
+      <%# end %>
+    </div>
+    <div class="col-lg-12">
+      <p style="text-align:center">-最新ブックマーク-</p>
+      <%# @favorite.each do |favorite| %>
+        <div class="favorite_list" style="display:inline-block;">
+          <%#= attachment_image_tag favorite, :image, :fill, 300, 300 %>
+          <%#= favorite.title %>
+          <p>ブックマーク切替</p>
+          <!--切替ボタン-->
+        </div>
+      <%# end %>
+    </div>
+  </div>
+</div>

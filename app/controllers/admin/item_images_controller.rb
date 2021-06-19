@@ -12,9 +12,9 @@ class Admin::ItemImagesController < ApplicationController
     #投稿を保存するためにはストロングパラメータについての記載がなかったため（ストロングパラメータで投稿に問題がないかを判定する）
 
     if @item_image.save #登録出来たら追加した素材の詳細ページへ移る
-      redirect_to admin_item_image_path(@item_image.id)
+      redirect_to admin_item_image_path(@item_image.id), notice: "線画を投稿しました!!"
     else #できなかったら新規登録画面に戻る
-      render 'new', danger: "登録に失敗しました"
+      render 'new', danger: "登録に失敗しました..."
     end
 
   end
@@ -27,9 +27,9 @@ class Admin::ItemImagesController < ApplicationController
   def edit
     @item_image = ItemImage.find(params[:id])
     if @item_image.update(item_image_params)#更新に成功したら素材の詳細ページへ移る
-      redirect_to admin_item_image_path(@item_image.id)
+      redirect_to admin_item_image_path(@item_image.id), notice: "更新しました!!"
     else#できなければ編集画面へ
-      render 'edit'
+      render 'edit', danger: "更新失敗しました..."
     end
   end
   def destroy
