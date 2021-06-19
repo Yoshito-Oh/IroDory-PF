@@ -14,7 +14,7 @@
               <%= attachment_image_tag post_image, :image, :fill, 150,150 %>
               <p><%= post_image.title %></p>
               <%= post_image.user.nickname %>
-            <% end %> 
+            <% end %>
             <br />
           <% end %>
         <% elsif @range == "線画素材" %><!--線画素材が選択された場合-->
@@ -23,7 +23,7 @@
             <%= link_to public_user_path(item_image.id) do %>
               <%= attachment_image_tag item_image, :image, :fill, 150,150 %><br />
               <%= item_image.item_title %>
-            <% end %> 
+            <% end %>
             <br />
           <% end %>
         <% else %><!--ユーザ検索-->
@@ -32,7 +32,7 @@
             <%= link_to public_user_path(user.id) do %>
               <%= attachment_image_tag user, :profile_image, :size => "100x100", fallback: "no_image.jpg" %><br />
               <%= user.nickname %>
-            <% end %> 
+            <% end %>
             <br />
           <% end %>
         <% end %>
