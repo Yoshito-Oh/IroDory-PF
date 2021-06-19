@@ -20,8 +20,10 @@ Rails.application.routes.draw do
 
   #ログイン時可能のアクション======================================================
   namespace :public do
-    resources :post_images, only: [:index, :new, :create, :edit, :update, :destroy]
-    resources :item_images, only: [:index, :show] 
+    resources :post_images, only: [:index, :edit, :update, :destroy]
+    resources :item_images, only: [:index, :show] do 
+      resources :post_images, only: [:new, :create]
+    end
     resources :users, only: [:show, :edit, :update, :destroy] #do
       #collection do
        # get 'unsubscribe'

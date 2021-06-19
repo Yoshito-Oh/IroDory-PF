@@ -15,7 +15,7 @@
 
 
               <%= link_to public_user_path(current_user.id) do %>
-                <li class="nav-item"><%= attachment_image_tag(current_user, :profile_image, height: "50", fallback: "no_image.jpg") %></li>
+                <li class="nav-item"><%#= attachment_image_tag(current_user, :profile_image, height: "50", fallback: "no_image.jpg") %></li>
                 <li class="nav-item"><p><%= current_user.nickname %>さん</p></li>
               <% end %>
               <!--deviseで追加している場合は「current_user」でよい-->

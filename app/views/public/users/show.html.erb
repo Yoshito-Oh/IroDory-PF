@@ -7,7 +7,7 @@
   <div class="row">
     <div class="col-lg-3">
       <div class="profile_image" style="text-align:center">
-        <%= attachment_image_tag(@user, :profile_image, :size => "200x200", fallback: "no_image.jpg") %>
+        <%#= attachment_image_tag(@user, :profile_image, :size => "200x200", fallback: "no_image.jpg") %>
           <!--フォロー・フォロワー数-->
           <% if current_user.id == @user.id %>
             <div class="user_button">
@@ -48,6 +48,12 @@
             <td>使用している画材</td>
             <td></td>
           </tr>
+          <% if current_user.id == @user.id %>
+          <tr>
+            <td>性別</td>
+            <td><%= @user.sex %></td>
+          </tr>
+          <% end %>
         </tbody>
       </table>
     </div>

@@ -4,7 +4,6 @@
       <p>詳細検索</p>
       <div class="search_form" style="text-align:center">
         <%= form_with url: searches_search_path, local:true, method: :get do |search| %>
-          <%#= search.select :range, options_for_select([['投稿画像'], ['線画素材'],['ユーザ']]) %>
           <%= search.radio_button :range, ['投稿画像'] ,style: "display:inline-block" %>
           <p style="display:inline-block;">投稿画像 | </p>
           <%= search.radio_button :range, ['線画素材'] ,style: "display:inline-block" %>
@@ -27,17 +26,15 @@
               <td>いいね数:</td>
               <td>
                 <%#= search.text_field :amount %>
-                <%#= search.radio_button :amount,['以上'] ,style: "display:inline-block"%>
+                <%= search.radio_button :amount,['以上'] ,style: "display:inline-block"%>
                 <p style="display:inline-block;">以上</p>
-                <%#= search.radio_button :amount,['以下'] ,style: "display:inline-block"%>
+                <%= search.radio_button :amount,['以下'] ,style: "display:inline-block"%>
                 <p style="display:inline-block;">以下</p>
               </td>
             </tr>
           </table>
-
           <br />
           <%= link_to "詳細検索", searches_detail_path, class: "btn btn-outline-primary" %>
-
         <% end %>
       </div>
     </div>

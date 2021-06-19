@@ -4,7 +4,7 @@ class ItemImage < ApplicationRecord
 
   #バリデーションの追加============================
   validates :item_title, presence: true
-  validates :item_image, presence: true
+  validates :image, presence: true
   #validates :item_introduction, presence: true
   #validates :status, inclusion:{in: [true, false]}
   #================================================
@@ -12,7 +12,7 @@ class ItemImage < ApplicationRecord
   #アソシエーション==========================
   has_many :post_images, dependent: :destroy
   #==========================================
-  
-  
-  
+
+
+
 end

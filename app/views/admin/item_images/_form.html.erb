@@ -1,6 +1,8 @@
 <div class="new_item_image">
+ 
   <%= form_with model: @item_image, url: admin_item_images_path, local: true do |f| %>
     <%= f.attachment_field :image %>
+     <p style="color:red">※PNGファイルの画像をアップロードしてください。</p>
     <table class="item-string">
       <tr>
         <td><p>タイトル</p></td>
