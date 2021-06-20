@@ -3,6 +3,11 @@ class Public::PostImagesController < ApplicationController
   def index
     @post_images = PostImage.page(params[:page]).reverse_order
     #新しく投稿されたものから表示させる
+    @tags = PostImage.tag_counts_on(:tags).most_userd(10)
+    if @tag = params[:tag]
+      @post_image = PostImage.tagged_with(params[:tag])
+      #tagged_with("タグ名")：絞り込み検索するメソッド
+    end
   end
   #==============================================
 
@@ -26,6 +31,7 @@ class Public::PostImagesController < ApplicationController
   #すでに投稿されているイラストの詳細ページ===========
   def show
     @post_image = PostImage.find(params[:id])
+    @tags = @post_image.tag_counts_on(:tags)
   end
   #===================================================
 
@@ -58,7 +64,7 @@ class Public::PostImagesController < ApplicationController
 
   private #ストロングパラメータ=================================================
   def post_image_params
-    params.require(:post_image).permit(:title, :introduction, :image, :tag)
+    params.require(:post_image).permit(:title, :introduction, :image, :tag_list)
   end
 
 end

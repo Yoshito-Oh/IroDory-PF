@@ -9,7 +9,41 @@
     </div>
     <div class="col-lg-9">
       <!--投稿されたイラストを表示する-->
+       <!--タイトルと説明文を表示-->
+        <h3><%= @post_image.title %></h3>
+        <p><%= @post_image.introduction %></p>
+      </div>
+      <div class="tag_list" style="display:inline-block;">
+        <!--タグを表示する-->
+        <%= f.label :tag_list %>
+        <%= text_field :tag_list, value: @post.tag_list.join(',') %>
+        <!--「,」で区切ると複数のタグに分割でできる-->
+        <% if @tags.present? %>
+          <% @tags.each do |tag| %>
+            <%= link_to "#{tag.name}", tags_path(tag.name) %>
+          <% end %>
+        <% else %>
+          <p>登録されているタグはありません</p>
+        <% end %>
 
+      </div>
+
+      <div class="item_image" style="text-align:center">
+        <!--タグで投稿絵と線画素材を切り替える-->
+
+        <%= attachment_image_tag @item_image, :image, width: '80%', height: '80%', format: 'png' %>
+        <p>投稿日時：<%= @item_image.created_at %></p>
+        <div class="download_and_post">
+          <%= link_to "線画PNGをダウンロード" ,admin_item_image_path(@item_image.id), class: "btn btn-secondary" %><br />
+          <!--便宜上、admin側の詳細ページに飛ばすが、DLする-->
+          <%= link_to "この素材でイラストを投稿", new_public_item_image_post_image_path(@item_image.id), class: "btn btn-outline-primary" %>
+        </div>
+
+        <div class="this_item_list">
+          <p>-この素材を使用したイラスト-</p>
+          <%# if %>
+          <%# else %>
+          <%# end %>
     </div>
   </div>
 </div>

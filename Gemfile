@@ -80,6 +80,10 @@ gem 'jquery-rails'
 gem 'font-awesome-sass', '~> 5.13'
 #==================================
 
+#タグ管理機能の追加==================
+gem 'acts-as-taggable-on', '~> 6.0'
+#====================================
+
 #デプロイに使用=======
 gem 'dotenv-rails'
 group :production do
