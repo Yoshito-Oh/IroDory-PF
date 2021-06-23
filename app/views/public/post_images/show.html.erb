@@ -29,6 +29,23 @@
           <%#= link_to "#{tag.name}", post_images_path(tag: tag.name) %>
         <%# end %>
       </div>
+      <div class="favorite_space">
+        <% if user_signed_in? %>
+          <% if @post_image.favorited_by?(current_user) %><!--すでにいいねしていたら-->
+            <p>
+              <%= link_to public_post_image_favorites_path(@post_image), method: :delete do %>
+                ♥<%= @post_image.favorites.count %>
+              <% end %>
+            </p>
+          <% else %><!--まだいいねしてなかったら-->
+            <p>
+              <%= link_to public_post_image_favorites_path(@post_image), method: :post do %>
+                ♡<%= @post_image.favorites.count %>
+              <% end %>
+            </p>
+          <% end %>
+        <% end %>  
+      </div>
       <div class="item_image" style="text-align:center">
         <!--タグで投稿絵と線画素材を切り替える-->
         <%= attachment_image_tag @post_image, :image, width: '80%', format: 'png' %>
@@ -36,9 +53,11 @@
         <%= attachment_image_tag @item_image, :image, width: '80%', format: 'png' %>
       </div>
     </div>
+      
+    </div>
     <div class="col-lg-12">
       <div class="this_item_image" style="text-align:center">
-        <%= link_to "この線画を使用した作品一覧>>",  %>
+        <%#= link_to "この線画を使用した作品一覧>>",  %>
       </div>
     </div>
   </div>

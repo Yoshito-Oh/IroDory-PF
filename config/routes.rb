@@ -46,8 +46,6 @@ Rails.application.routes.draw do
        # get 'unsubscribe'
       #end
     #end
-    get 'favorites/create'
-    get 'favorites/destroy'
   end
   #=================================================================================
 

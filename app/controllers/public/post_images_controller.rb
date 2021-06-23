@@ -20,7 +20,6 @@ class Public::PostImagesController < ApplicationController
     item_image_id =  params[:item_image_id]
     @post_image = PostImage.new(post_image_params)
     @post_image.item_image_id = item_image_id
-    #@post_image.image_id = params[:post_image][:image]
     @post_image.user_id = current_user.id
     if @post_image.save #登録出来たら
       redirect_to public_item_image_post_image_path(item_image_id, @post_image.id), success: "投稿できました！"
