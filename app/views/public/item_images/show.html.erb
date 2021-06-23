@@ -2,18 +2,21 @@
   <div class="row">
     <div class="col-lg-3">
       <!--マイページリンク-->
-      <div class="profile_image">
-        <%= attachment_image_tag current_user.profile_image, :fill, 150, 150, fallback: "no_image.jpg" %><br />
-        <%= current_user.name %>
-      </div>
+      
       <% if user_signed_in? %>
       <!--投稿した人の自己紹介とほかの作品が表示される-->
+      <div class="profile_image">
+        <p>ログインユーザ</p>
+        <%= attachment_image_tag(current_user, :profile_image, :size =>"200x200", fallback: "no_image.jpg") %><br />
+        <%= current_user.name %><br />
+        <%= current_user.introduction%>
+      </div>
       <% else %>
       <!--ログインと新規登録を促す-->
       <div class="loginsignin">
         <p>会員登録して多くの作品を見よう！</p>
-        <%#= link_to "ログイン", new_user_session_path class: "btn btn-primary" %>
-        <%#= link_to "新規登録", new_user_registration_path class: "btn btn-success"%>
+        <%= link_to "ログイン", new_user_session_path, class: "btn btn-primary" %><br />
+        <%= link_to "新規登録", new_user_registration_path, class: "btn btn-success"%>
       </div>
       <% end %>
     </div>
@@ -29,22 +32,30 @@
       
       <div class="item_image" style="text-align:center">
         <!--タグで投稿絵と線画素材を切り替える-->
-        
         <%= attachment_image_tag @item_image, :image, width: '80%', height: '80%', format: 'png' %>
         <p>投稿日時：<%= @item_image.created_at %></p>
-        <div class="download_and_post">
-          <%= link_to "線画PNGをダウンロード" ,admin_item_image_path(@item_image.id), class: "btn btn-secondary" %><br />
-          <!--便宜上、admin側の詳細ページに飛ばすが、DLする-->
-          <%= link_to "この素材でイラストを投稿", new_public_item_image_post_image_path(@item_image.id), class: "btn btn-outline-primary" %>
-        </div>
         
-        <div class="this_item_list">
-          <p>-この素材を使用したイラスト-</p>
-          <%# if %>
-          <%# else %>
-          <%# end %>
-        </div>
+        <% if user_signed_in? %>
+          <div class="download_and_post">
+            <%= link_to "線画PNGをダウンロード" ,admin_item_image_path(@item_image.id), class: "btn btn-secondary" %><br />
+            <!--便宜上、admin側の詳細ページに飛ばすが、DLする-->
+            <%= link_to "この素材でイラストを投稿", new_public_item_image_post_image_path(@item_image.id), class: "btn btn-outline-primary" %>
+          </div>
+        <% end %>
       </div>
+    </div>
+    <div class="col-lg-12">
+      <div class="this_item_list">
+          <p>-この素材を使用したイラスト-</p>
+          <% @post_images.each do |post_image| %>
+            <div class="aaa" style="display:inline-block;text-align:center">
+              <%= link_to public_post_image_path(post_image.id) do %>
+                <%= attachment_image_tag post_image, :image, width: '75%' %><br />
+                <%= post_image.user.nickname %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
     </div>
   </div>
 </div>

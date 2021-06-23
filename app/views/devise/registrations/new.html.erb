@@ -17,11 +17,11 @@
   
         <div class="field">
           <%= f.label :"性別" %><br />
-          <%= f.radio_button :sex, :true %>
-          <%= f.label :sex, "男", {value: true, style: "display: inline-block;" }%>
+          <%= f.radio_button :sex, 0 %>
+          <%= f.label :sex, "男", {value: 0, style: "display: inline-block;" }%>
     
-          <%= f.radio_button :sex, :false  %>
-          <%= f.label :sex, "女", {value: false, style: "display: inline-block;" }%>
+          <%= f.radio_button :sex, 1  %>
+          <%= f.label :sex, "女", {value: 1, style: "display: inline-block;" }%>
         </div>
   
         <div class="field">

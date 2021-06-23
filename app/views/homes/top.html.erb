@@ -1,11 +1,24 @@
-<h1>Top Page</h1>
+
 <div class="container">
   <div class="row">
     <div class="col">
-      <h1 class="title" style="text-align:center">IroDory</h1>
+      
       <%#= link_to "IroDoryってなに？", about_path %>
-      <%= link_to "線画素材を探す(新着)", public_item_images_path %>
-      <%= link_to "投稿イラストを見る(新着)", public_post_images_path %>
+      <div class="top_introduction" style="text-align:center">
+        <h1 class="title">IroDory</h1>
+        <br />
+        <h4>IroDoryとは....？</h4>
+        <p>IroDoryは線画を提供して塗り絵を投稿するサイトです。</p>
+        
+        <h4>どんな人に向いているの？</h4>
+        <p>「イラストを描きたいけれど、描いたことがない。」<br />
+        「塗り絵から始めてみたい」という初心者向けです。<br />
+        また、「人物・背景などは描いたことがあるけどそれ以外が苦手」<br />
+        という中級者にもお勧めです！</p>
+        <%= link_to "線画素材を探す(新着)", public_item_images_path %> | 
+        <%= link_to "投稿イラストを見る(新着)", public_post_images_path %>
+      </div>
+      
     </div>
   </div>
 </div>

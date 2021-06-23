@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3">
+      <%= attachment_image_tag(@pending_image.user, :profile_image, :size => "200x200", fallback: "no_image.jpg") %>
+      <%= @pending_image.user.nickname %>
+      <%= @pending_image.user.introduction%>
+    </div>
+    <div class="col-lg-9" style="background-color:white">
+
+        <!--タイトルと説明文を表示-->
+        <h3><%= @pending_image.title %></h3>
+        <p><%= @pending_image.img_introduction %></p>
+
+      <div class="item_image" style="text-align:center">
+        <!--タグで投稿絵と線画素材を切り替える-->
+        <%= attachment_image_tag @pending_image, :image, width: '80%', height: '80%', format: 'png' %>
+        <p>投稿日時：<%= @pending_image.created_at %></p>
+      </div>
+      <div class="apply_reject">
+        <%= form_with model: @pending_image, url: admin_apply_path, local:true do |f| %>
+          <h2>-承認前の確認事項-</h2>
+          <ul>
+            <li>
+              <%= f.check_box :reason %>
+              <%= f.label :reason, "素材となる線画を使用している。" %>
+            </li>
+            <li>
+              <%= f.check_box :reason %>
+              <%= f.label :reason, "暴力・反社会表現がない。" %>
+            </li>
+            <li>
+              <%= f.check_box :reason %>
+              <%= f.label :reason, "他の著作物を侵害するもんではない。" %>
+            </li>
+            <li>
+              <%= f.check_box :reason %>
+              <%= f.label :reason, "誹謗中傷など他者を傷つけるような表現がない。" %>
+            </li>
+          </ul>
+          <div class="judge" style="text-align:center">
+            <%= f.submit "承認する", class: "btn btn-success" %>
+            <%= link_to "却下する", admin_reject_path, class: "btn btn-danger" %>
+          </div>
+          
+        <% end %>
+        
+      </div>
+    </div>
+  </div>
+</div>

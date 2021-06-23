@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <h2>却下する理由</h2>
+      <%= form_with model: @post_image, url: admin_reason_path, local: true do |f| %>
+        <%= f.check_box :reason %>
+        <%= f.label :reason, "線画を使用していない。" %>
+        <%= f.submit "却下理由を送る"class: "btn btn-danger" %>
+      <% end %>
+    </div>
+  </div>
+</div>

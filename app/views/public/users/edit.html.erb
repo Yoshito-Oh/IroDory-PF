@@ -1,11 +1,14 @@
 <%= form_with model: @user, url: public_user_path, local:true do |f| %>
 <!--ヘッダーの変更-->
+<div class="profile_header" style="text-align:center;height:300px">
+  <%= f.attachment_field :profile_header %>
+</div>
 <div class="container">
   <div class="row">
     <div class="col-lg-3">
-      <p>ユーザ編集画面</p>
+      <p>プロフィール画像編集</p>
       
-      <div class="profile_image" style="text-align:center">
+      <div class="profile_image" style="text-align:center;">
         <%= f.attachment_field :profile_image %>
       </div>
     </div>
@@ -28,12 +31,12 @@
             <td class="gn-light"><%= f.text_area :introduction, class: "form-control introduction" %></td>
           </tr>
           <tr>
-            <td class="bg-light">投稿枚数</td>
-            <td class="bg-light"><%#= current_user.post_image.count%></td>
+            <td class="bg-light">普段使用している画材</td>
+            <td class="bg-light"><%#= f.text_field %></td>
           </tr>
           <tr>
-            <td>使用している画材</td>
-            <td><%#= f.text_field %></td>
+            <td class="gn-lingt">性別</td>
+            <td class="bn-light"><%= @user.sex %></td>
           </tr>
         </tbody>
       </table>

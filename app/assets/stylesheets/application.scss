@@ -12,12 +12,22 @@
  *
  *= require_tree .
  *= require_self
+ *= require dropzone 
  */
  @import "bootstrap";
 
 header{
   padding :10px;
   background-color: #F7F9FA;
+}
+
+body{
+ background-color: #EBEEF4; 
+}
+.row{
+  background-color: white;
+  padding: 20px;
+  border-radius: 20px;
 }
 .nav{
   list-style: none;
@@ -36,4 +46,7 @@ header{
   padding-bottom: 10px; 
   background-color: white;
   border-bottom: inset 2px #E7F1ED;
+}
+.pending_list{
+  display: inline-block;
 }

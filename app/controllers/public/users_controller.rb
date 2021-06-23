@@ -1,7 +1,8 @@
 class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
-    @post_images = @user.post_images
+    @post_images = PostImage.where(status: true)
+    @pending_images = PostImage.where(status: false)
   end
   
   def edit
@@ -29,7 +30,11 @@ class Public::UsersController < ApplicationController
   private#ストロングパラメータ==========================================
   
   def user_params
-    params.require(:user).permit(:name, :image, :introduction, :status)
+    params.require(:user).permit(:name, :profile_image, :introduction, :status, :profile_header)
+  end
+  
+  def post_image_params
+    params.require(:post_image).permit(:title, :image, :status)
   end
   
 end

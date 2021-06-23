@@ -1,0 +1,10 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12" style="text-align:center">
+      <h2>承認完了</h2>
+      <p>投稿画像の承認がされました！</p>
+      <%= attachment_image_tag @post_image, :image, width: "80%" %>
+      <%= link_to "承認待機一覧に戻る", admin_applies_path, class: "btn btn-secondary" %>
+    </div>
+  </div>
+</div>

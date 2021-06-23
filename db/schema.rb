@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_17_090748) do
+ActiveRecord::Schema.define(version: 2021_06_23_042917) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,6 +22,18 @@ ActiveRecord::Schema.define(version: 2021_06_17_090748) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "applies", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "post_image_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "item_images", force: :cascade do |t|
     t.integer "tag_id"
     t.string "item_title"
@@ -30,6 +42,7 @@ ActiveRecord::Schema.define(version: 2021_06_17_090748) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image_id"
+    t.integer "post_image_id"
   end
 
   create_table "post_images", force: :cascade do |t|
@@ -38,16 +51,37 @@ ActiveRecord::Schema.define(version: 2021_06_17_090748) do
     t.string "title"
     t.text "img_introduction"
     t.string "art_supplies"
-    t.string "status"
+    t.boolean "status", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image_id"
+    t.integer "item_image_id"
+    t.text "reason"
+  end
+
+  create_table "taggings", force: :cascade do |t|
+    t.integer "tag_id"
+    t.string "taggable_type"
+    t.integer "taggable_id"
+    t.string "tagger_type"
+    t.integer "tagger_id"
+    t.string "context", limit: 128
+    t.datetime "created_at"
+    t.index ["context"], name: "index_taggings_on_context"
+    t.index ["tag_id"], name: "index_taggings_on_tag_id"
+    t.index ["taggable_id", "taggable_type", "context"], name: "taggings_taggable_context_idx"
+    t.index ["taggable_id", "taggable_type", "tagger_id", "context"], name: "taggings_idy"
+    t.index ["taggable_id"], name: "index_taggings_on_taggable_id"
+    t.index ["taggable_type"], name: "index_taggings_on_taggable_type"
+    t.index ["tagger_id", "tagger_type"], name: "index_taggings_on_tagger_id_and_tagger_type"
+    t.index ["tagger_id"], name: "index_taggings_on_tagger_id"
   end
 
   create_table "tags", force: :cascade do |t|
-    t.string "tag_name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer "taggings_count", default: 0
   end
 
   create_table "users", force: :cascade do |t|
@@ -58,13 +92,14 @@ ActiveRecord::Schema.define(version: 2021_06_17_090748) do
     t.datetime "remember_created_at"
     t.string "name", null: false
     t.string "nickname"
-    t.boolean "sex", default: true, null: false
+    t.integer "sex", default: 1, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "introduction"
     t.string "status"
     t.string "Country"
-    t.integer "profile_image"
+    t.string "profile_image_id"
+    t.string "profile_header_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

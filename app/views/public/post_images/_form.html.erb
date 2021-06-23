@@ -1,28 +1,29 @@
 <div class="new_item_image">
   <p>使用する線画</p>
-  <!--線画-->
+  <!--使用する線画-->
   <%= attachment_image_tag @item_image, :image, width: '40%', height: '40%', format: 'png' %>
-  <%= form_with model: @post_image, url: public_item_images_path, local: true do |f| %>
-    <%= f.attachment_field :post_image %>
+  <!--投稿フォーム-->
+  <%= form_with model: @post_image, url: public_item_image_post_images_path, local: true do |f| %>
+
+  <!--画像を保存する-->
+    <%= f.attachment_field :image %>
     <table class="item-string">
       <tr>
-        <td><p>タイトル</p></td>
+        <td><p>タイトル</p></td><!--タイトル入力-->
         <td><%= f.text_field :title %></td>
       </tr>
       <tr>
-        <td><p>登録タグ</p></td>
-        <td>
-          <%#= f.tag%>
-        </td>
+        <td>使用した画材</td>
+        <td><%= f.text_field :art_supplies %></td>
       </tr>
     </table>
     <p>説明文</p>
-    <%= f.text_area :introduction %>
+    <%= f.text_area :img_introduction %>
     <br />
     <div class="form-group">
-      <% if post_image.title.blank? %> 
+      <% if post_image.title.blank? %>
       <!--新規登録の場合-->
-        <%= f.submit "承認依頼", class: 'btn btn-success' %>
+        <%= f.submit "投稿承認依頼", class: 'btn btn-success' %>
       <% else %>
       <!--編集の場合-->
         <%= f.submit "更新", class: 'btn btn-success'%>
