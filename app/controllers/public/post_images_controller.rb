@@ -33,7 +33,6 @@ class Public::PostImagesController < ApplicationController
 
   #すでに投稿されているイラストの詳細ページ===================================
   def show
-    
     @post_image = PostImage.find(params[:id])
     use_item = @post_image.item_image_id
     @item_image = ItemImage.find(use_item)

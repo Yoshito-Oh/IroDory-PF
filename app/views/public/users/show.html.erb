@@ -11,20 +11,20 @@
         <br />
         <%= @user.nickname %>
           <!--フォロー・フォロワー数-->
-          <% if current_user.id == @user.id %>
-            <div class="user_button">
-              <%= link_to "編集", edit_public_user_path(current_user.id), class: "btn btn-outline-secondary w-75 rounded-pill" %><br />
-            </div>
-            <div class="user_button">
-              <%= link_to "退会", edit_public_user_path(current_user.id), method: :destroy, class: "btn btn-outline-danger w-75 rounded-pill" %>
-            </div>
-            
-          <%# else %>
-            <%# if current_user.following?(user) %>
-              <%#= link_to "フォロー中", user_relationships_path(user.id), class: "btn btn-info", method: :delete %>
-            <%# else %>
-            <%#= link_to "フォロー", user_relationships_path(user.id), class: "btn btn-info", method: :post %>
-          <%# end %>
+        <% if current_user.id == @user.id %>
+          <div class="user_button">
+            <%= link_to "編集", edit_public_user_path(current_user.id), class: "btn btn-outline-secondary w-75 rounded-pill" %><br />
+          </div>
+          <div class="user_button">
+            <%= link_to "退会", edit_public_user_path(current_user.id), method: :destroy, class: "btn btn-outline-danger w-75 rounded-pill" %>
+          </div>
+          
+        <% else %>
+          <% if current_user.following?(@user.id) %>
+            <%= link_to "フォロー解除", public_user_relationships_path(@user.id), class: 'btn btn-primary',method: :delete %>
+          <% else %>
+            <%= link_to "フォロー", public_user_relationships_path(@user.id), class: 'btn btn-outline-primary',method: :post %>
+          <% end %>
         <% end %>  
       </div>
     </div>
