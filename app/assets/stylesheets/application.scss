@@ -12,7 +12,7 @@
  *
  *= require_tree .
  *= require_self
- *= require dropzone 
+ *= require dropzone
  */
  @import "bootstrap";
 
@@ -22,7 +22,7 @@ header{
 }
 
 body{
- background-color: #EBEEF4; 
+ background-color: #EBEEF4;
 }
 .row{
   background-color: white;
@@ -43,7 +43,7 @@ body{
   text-align: center;
 }
 .user_profile{
-  padding-bottom: 10px; 
+  padding-bottom: 10px;
   background-color: white;
   border-bottom: inset 2px #E7F1ED;
 }
