@@ -29,6 +29,16 @@ class Public::UsersController < ApplicationController
     redirect_to root
   end
   
+  def following
+    @user = User.find_by(id: params[:id])
+    @users = @user.followings
+  end
+  
+  def follower
+    @user = User.find_by(id: params[:id])
+    @users = @user.followers
+  end
+  
   private#ストロングパラメータ==========================================
   
   def user_params

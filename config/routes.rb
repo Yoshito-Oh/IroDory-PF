@@ -3,12 +3,8 @@ Rails.application.routes.draw do
   get 'index/show'
   get 'index/apply'
   get 'index/reject'
-  namespace :public do
-    
-  end
   devise_for :admins
   get 'searches/search'
-  get 'searches/detail'
   devise_for :users
   root to: 'homes#top'
 
@@ -41,11 +37,12 @@ Rails.application.routes.draw do
     resources :item_images, only: [:index, :show] do 
       resources :post_images, only: [:new, :show, :create]
     end
-    resources :users, only: [:show, :edit, :update, :destroy] #do
-      #collection do
-       # get 'unsubscribe'
-      #end
-    #end
+    resources :users, only: [:show, :edit, :update, :destroy] do
+      member do 
+        get :following, :follower
+      end
+      resource :relationships, only: [:create, :destroy]
+    end
   end
   #=================================================================================
 

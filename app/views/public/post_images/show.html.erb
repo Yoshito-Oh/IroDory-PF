@@ -2,11 +2,41 @@
   <div class="row">
     <div class="col-lg-3" style="text-align:center">
       <!--この画像を投稿した人のプロフィール-->
-      <%= attachment_image_tag(@post_image.user, :profile_image, :size => "200x200", fallback: "no_image.jpg") %>
-      <%= @post_image.user.nickname %>
+      <%= attachment_image_tag(@post_image.user, :profile_image, :size => "200x200", fallback: "no_image.jpg") %><br />
+      <%= @post_image.user.nickname %><br />
       <%= @post_image.user.introduction %>
       <br />
-      
+      <div class="relationships_field">
+        <% if user_signed_in? %>
+          <table>
+            <tr>
+              <td>フォロー</td>
+              <td>
+                <%= link_to following_public_user_path(@user) do %>
+                  <%= @user.followings.count %>
+                <% end %>
+              </td>
+            </tr>
+            <tr>
+              <td>フォロワー</td>
+              <td>
+                <%= link_to follower_public_user_path(@user) do %>
+                  <%= @user.followers.count %>
+                <% end %>
+              </td>
+            </tr>
+          </table>
+          <% if current_user.id == @user.id %>
+            <%= link_to "マイページ", public_user_path(@user), class: "btn btn-outline-primary" %>
+          <% else %>
+            <% if current_user.following?(@user) %>
+              <%= link_to "フォロー解除", public_user_relationships_path(@user.id), class: 'btn btn-primary',method: :delete %>
+            <% else %>
+              <%= link_to "フォロー", public_user_relationships_path(@user.id), class: 'btn btn-outline-primary',method: :post %>
+            <% end %>
+          <% end %>
+        <% end %>  
+      </div>
       <div class="this_user_list" style="margin-top:30px;">
         <p>-このユーザーのイラスト-</p>
         <% @post_images.each do |post_image| %>

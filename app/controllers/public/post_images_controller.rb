@@ -33,12 +33,13 @@ class Public::PostImagesController < ApplicationController
 
   #すでに投稿されているイラストの詳細ページ===================================
   def show
+    
     @post_image = PostImage.find(params[:id])
     use_item = @post_image.item_image_id
     @item_image = ItemImage.find(use_item)
-    user = @post_image.user_id
-    @post_images = PostImage.where(user_id: user).where(status: true)
-    @tags = @post_image.tag_counts_on(:tags)
+    @user = @post_image.user
+    @post_images = PostImage.where(user_id: @user.id).where(status: true)
+   # @tags = @post_image.tag_counts_on(:tags)
   end
   #===========================================================================
 

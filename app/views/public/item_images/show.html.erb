@@ -5,12 +5,12 @@
       
       <% if user_signed_in? %>
       <!--投稿した人の自己紹介とほかの作品が表示される-->
-      <div class="profile_image">
-        <p>ログインユーザ</p>
-        <%= attachment_image_tag(current_user, :profile_image, :size =>"200x200", fallback: "no_image.jpg") %><br />
-        <%= current_user.name %><br />
-        <%= current_user.introduction%>
-      </div>
+        <div class="profile_image">
+          <p>ログインユーザ</p>
+          <%= attachment_image_tag(current_user, :profile_image, :size =>"200x200", fallback: "no_image.jpg") %><br />
+          <%= current_user.name %><br />
+          <%= current_user.introduction %>
+        </div>
       <% else %>
       <!--ログインと新規登録を促す-->
       <div class="loginsignin">

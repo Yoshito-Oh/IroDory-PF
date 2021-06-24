@@ -19,4 +19,22 @@ class User < ApplicationRecord
   enum sex: {"男": 0, "女": 1} #enumは数字対応のため、boolean型とは相性が悪い
   #------------------------------------------
 
+  #フォロー/フォロワー機能==========================================
+  has_many :active_relationships, foreign_key: "follower_id", class_name: "Relationship", dependent: :destroy
+  has_many :followings, through: :active_relationships, source: :followed #follower(前)
+
+  has_many :passive_relationships, foreign_key: "followed_id", class_name: "Relationship", dependent: :destroy
+  has_many :followers, through: :passive_relationships, source: :follower #followed(前)
+
+  def following?(other_user)
+    self.followings.include?(other_user)
+  end
+  def follow(other_user)
+    active_relationships.create(followed_id: other_user.id)
+  end
+  def unfollow(other_user)
+    active_relationships.find_by(followed_id: other_user.id).destroy
+  end
+  #================================================================
+
 end
