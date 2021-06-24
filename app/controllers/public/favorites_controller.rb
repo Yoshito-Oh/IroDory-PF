@@ -1,8 +1,8 @@
 class Public::FavoritesController < ApplicationController
   def create
-    
     post_image = PostImage.find(params[:post_image_id])
-    item_image = ItemImage.find(params[:id])
+    item_image = ItemImage.select(:item_image_id)
+    #指定したカラムの情報を抽出する。⇒select(:指定カラム)
     #詳細ページに表示されているIDを検索し、post_imageに情報を格納する
     favorite = current_user.favorites.new(post_image_id: post_image.id)
     # 3行目で格納したpost_imageのIDをいいねに「現在ログインしているユーザの新しいいいね」として格納
@@ -13,7 +13,7 @@ class Public::FavoritesController < ApplicationController
 
   def destroy
     post_image = PostImage.find(params[:post_image_id])
-    item_image = ItemImage.find(params[:id])
+    item_image = ItemImage.select(:item_image_id)
     #詳細ページに表示されているIDを検索し、post_imageに情報を格納する
     favorite = current_user.favorites.find_by(post_image_id: post_image.id)
     favorite.destroy

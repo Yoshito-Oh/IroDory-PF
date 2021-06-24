@@ -20,7 +20,7 @@ class Admin::AppliesController < ApplicationController
   end
 
   def apply
-    @post_image = PostImage.find(params[:id])
+    @post_image = PostImage.select(:post_image_id)
   end
 
   def reject

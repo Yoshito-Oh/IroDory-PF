@@ -3,6 +3,7 @@ class Public::PostImagesController < ApplicationController
   def index
     @post_images = PostImage.where(status: 'true').reverse_order#.page(params[:page]).reverse_order
     #新しく投稿されたものから表示させる
+    @item_image = ItemImage.where(params[:item_image_id])
     #@tags = PostImage.tag_counts_on(:tags).most_userd(10)
     #if @tag = params[:tag]
       #@post_image = PostImage.tagged_with(params[:tag])

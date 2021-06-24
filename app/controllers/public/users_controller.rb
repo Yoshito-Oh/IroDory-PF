@@ -1,8 +1,10 @@
 class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
-    @post_images = PostImage.where(status: true)
-    @pending_images = PostImage.where(status: false)
+    #post_image：全体で投稿された中で「current_user」でかつ「status:true」のもののみ
+    @post_images = PostImage.where(status: true,user_id: current_user.id)
+    #pending_image：current_userで「status:false」のもののみ
+    @pending_images = PostImage.where(status: false,user_id: current_user.id)
   end
   
   def edit
