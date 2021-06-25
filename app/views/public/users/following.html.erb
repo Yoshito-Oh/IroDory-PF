@@ -18,11 +18,19 @@
           <tbody>
             <% @users.each do |user| %>
               <tr>
-                <td><%= attachment_image_tag(user, :profile_image, :size => "200x200", fallback: "no_image.jpg") %></td>
                 <td>
-                  <%= user.nickname %><br />
-                  フォロー：<%= user.followings.count %><br />
-                  フォロワー：<%= user.followers.count %>
+                  <div class="profile_image" style="text-align:center">
+                    <%= attachment_image_tag(user, :profile_image, :size => "100x100", fallback: "no_image.jpg") %>
+                  </div>
+                  
+                </td>
+                <td>
+                  <%= link_to public_user_path(user) do %>
+                    <h4><%= user.nickname %><br /></h4>
+                  <% end %>
+                  フォロー：<%= link_to following_public_user_path(user) do %><%= user.followings.count %><% end %><br />
+                  フォロワー：<%= link_to follower_public_user_path(user) do %><%= user.followers.count %><% end %><br />
+                  <p><%= user.introduction %></p>
                 </td>
               </tr>
             <% end %>

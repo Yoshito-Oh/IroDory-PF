@@ -4,8 +4,7 @@
       <!--この画像を投稿した人のプロフィール-->
       <%= attachment_image_tag(@post_image.user, :profile_image, :size => "200x200", fallback: "no_image.jpg") %><br />
       <%= @post_image.user.nickname %><br />
-      <%= @post_image.user.introduction %>
-      <br />
+      <%= @post_image.user.introduction %><br />
       <div class="relationships_field">
         <% if user_signed_in? %>
           <table>
@@ -27,7 +26,7 @@
             </tr>
           </table>
           <% if current_user.id == @user.id %>
-            <%= link_to "マイページ", public_user_path(@user), class: "btn btn-outline-primary" %>
+            <%= link_to "マイページ", public_user_path(@user), class: "btn btn-outline-primary" %><br />
           <% else %>
             <% if current_user.following?(@user) %>
               <%= link_to "フォロー解除", public_user_relationships_path(@user.id), class: 'btn btn-primary',method: :delete %>

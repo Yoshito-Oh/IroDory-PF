@@ -10,6 +10,7 @@
         <%= attachment_image_tag(@user, :profile_image, :size => "200x200", fallback: "no_image.jpg") %>
         <br />
         <%= @user.nickname %>
+        <br />
           <!--フォロー・フォロワー数-->
         <% if current_user.id == @user.id %>
           <div class="user_button">
