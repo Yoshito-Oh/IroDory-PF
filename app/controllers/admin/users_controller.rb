@@ -8,6 +8,7 @@ class Admin::UsersController < ApplicationController
   #管理者側のユーザ詳細画面=================
   def show
     @user = User.find_by(params[:id])
+    @post_images = PostImage.where(user_id: @user.id, status: true)
   end
 
   def edit

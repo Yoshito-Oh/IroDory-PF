@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     get 'applies/show'
     get 'applies/apply'
     get 'applies/reject'
-    resources :item_images
+    resources :item_images 
     resources :post_images ,only: [:index, :show]
     resources :pending_images ,only: [:index, :show, :edit, :update]
     resources :users, only: [:index, :show, :edit, :update]
@@ -36,6 +36,8 @@ Rails.application.routes.draw do
     end
     resources :item_images, only: [:index, :show] do 
       resources :post_images, only: [:new, :show, :create]
+      get 'download' => 'item_images#download'
+      post 'download' => 'item_images#download'
     end
     resources :users, only: [:show, :edit, :update, :destroy] do
       member do 

@@ -14,16 +14,7 @@
           <%= f.label :"ニックネーム(※ほかのユーザーにはこちらの名前で表示されます。)" %><br />
           <%= f.text_field :nickname, autofocus: true %>
         </div>
-  
-        <div class="field">
-          <%= f.label :"性別" %><br />
-          <%= f.radio_button :sex, 0 %>
-          <%= f.label :sex, "男", {value: 0, style: "display: inline-block;" }%>
-    
-          <%= f.radio_button :sex, 1  %>
-          <%= f.label :sex, "女", {value: 1, style: "display: inline-block;" }%>
-        </div>
-  
+
         <div class="field">
           <%= f.label :"メールアドレス" %><br />
           <%= f.email_field :email, autofocus: true, autocomplete: "email" %>

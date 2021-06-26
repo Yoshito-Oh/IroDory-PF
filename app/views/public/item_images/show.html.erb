@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-lg-3">
       <!--マイページリンク-->
-      
+
       <% if user_signed_in? %>
       <!--投稿した人の自己紹介とほかの作品が表示される-->
         <div class="profile_image">
@@ -29,15 +29,15 @@
       <div class="tag_list" style="display:inline-block;">
         <!--タグを表示する-->
       </div>
-      
+
       <div class="item_image" style="text-align:center">
         <!--タグで投稿絵と線画素材を切り替える-->
         <%= attachment_image_tag @item_image, :image, width: '80%', height: '80%', format: 'png' %>
         <p>投稿日時：<%= @item_image.created_at %></p>
-        
+
         <% if user_signed_in? %>
           <div class="download_and_post">
-            <%= link_to "線画PNGをダウンロード" ,admin_item_image_path(@item_image.id), class: "btn btn-secondary" %><br />
+            <%= button_to "線画PNGをダウンロード",public_item_image_download_path(@item_image.id),method: :get, class: "btn btn-secondary" %><br />
             <!--便宜上、admin側の詳細ページに飛ばすが、DLする-->
             <%= link_to "この素材でイラストを投稿", new_public_item_image_post_image_path(@item_image.id), class: "btn btn-outline-primary" %>
           </div>
@@ -57,5 +57,6 @@
           <% end %>
         </div>
     </div>
+    <%#= link_to "", 'javascript:history.back()', class: "fas fa-undo" %>
   </div>
 </div>

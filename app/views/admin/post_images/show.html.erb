@@ -12,26 +12,5 @@
         <h3><%= @post_image.post_title %></h3>
         <p><%= @post_image.img_introduction %></p>
     </div>
-    <div class="tag_list" style="display:inline-block;">
-      <%# @tags.each do |tag| %>
-        <%#= link_to "#{tag.name}", post_images_path(tag: tag.name) %>
-      <%# end %>
-    </div>
-    <div class="apply_caution">
-      <h2>承認前注意事項</h2>
-      <p>下記の内容について確認の元、承認をしてください</p>
-      <ul>
-        <li>素材線画を使用していますか？</li>
-        <li>他の著作物を侵害しませんか？</li>
-        <li>他者を傷つけるような誹謗中傷がありませんか？</li>
-        <li>脅迫・非人道的な表現がありませんか？</li>
-      </ul>
-    </div>
-    <div class="apply_post_image">
-      <%= form_with model: @post_image, url: public_item_image_post_image_path, local: true do |f| %>
-        <%= f.hidden_field :status, :value => true %>
-        <%= f.submit "承認", class: "btn btn-primary"%>
-      <% end %>
-    </div>
   </div>
 </div>

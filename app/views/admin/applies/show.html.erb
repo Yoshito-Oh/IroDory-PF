@@ -21,30 +21,45 @@
           <h2>-承認前の確認事項-</h2>
           <ul>
             <li>
-              <%= f.check_box :reason %>
+              <%= f.check_box :reason, id: 'check-reason1', onclick:"click_check()" %>
               <%= f.label :reason, "素材となる線画を使用している。" %>
             </li>
             <li>
-              <%= f.check_box :reason %>
+              <%= f.check_box :reason, id: 'check-reason2', onclick:"click_check()" %>
               <%= f.label :reason, "暴力・反社会表現がない。" %>
             </li>
             <li>
-              <%= f.check_box :reason %>
-              <%= f.label :reason, "他の著作物を侵害するもんではない。" %>
+              <%= f.check_box :reason, id: 'check-reason3', onclick:"click_check()" %>
+              <%= f.label :reason, "他の著作物を侵害するものではない。" %>
             </li>
             <li>
-              <%= f.check_box :reason %>
+              <%= f.check_box :reason, id: 'check-reason4', onclick:"click_check()" %>
               <%= f.label :reason, "誹謗中傷など他者を傷つけるような表現がない。" %>
             </li>
           </ul>
           <div class="judge" style="text-align:center">
-            <%= f.submit "承認する", class: "btn btn-success" %>
+            <%= f.submit "承認する", class: "btn btn-success", id:'submit-apply', disabled: true %>
             <%= link_to "却下する", admin_reject_path, class: "btn btn-danger" %>
           </div>
-          
+
         <% end %>
-        
+
       </div>
     </div>
   </div>
 </div>
+<script>
+function click_check() {
+  var check1 = document.getElementById('check-reason1');
+  var check2 = document.getElementById('check-reason2');
+  var check3 = document.getElementById('check-reason3');
+  var check4 = document.getElementById('check-reason4');
+  var submit = document.getElementById('submit-apply');
+  if (check1.checked && check2.checked && check3.checked && check4.checked) {
+    submit.disabled = false;
+  } else {
+    submit.disabled = true;
+  }
+}
+
+</script>

@@ -8,8 +8,4 @@ class Admin::PostImagesController < ApplicationController
     @post_image = PostImage.find(params[:id])
   end
   
-  private
-  
-  
-  
 end
