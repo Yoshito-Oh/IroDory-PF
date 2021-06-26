@@ -50,14 +50,14 @@
     </div>
     <div class="col-lg-12">
       <p style="text-align:center">-最新ブックマーク-</p>
-      <%# @favorite.each do |favorite| %>
+      <% @favorite.each do |favorite| %>
         <div class="favorite_list" style="display:inline-block;">
-          <%#= attachment_image_tag favorite, :image, :fill, 300, 300 %>
-          <%#= favorite.title %>
+          <%= attachment_image_tag favorite., :image, :fill, 300, 300 %>
+          <%= favorite.title %>
           <p>ブックマーク切替</p>
           <!--切替ボタン-->
         </div>
-      <%# end %>
+      <% end %>
     </div>
   </div>
 </div>
