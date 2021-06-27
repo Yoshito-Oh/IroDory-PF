@@ -6,7 +6,7 @@
       <%= @user.nickname %>
     </div>
     <div class="col-lg-9">
-      <%= attachment_image_tag @post_image, :image, width: '80%', height: '80%', format: 'png' %>
+      <%= attachment_image_tag @post_image, :image, width: '200px', height: '200px', style: "object-fit:cover" %>
       <p>投稿日時：<%= @post_image.created_at %></p>
         <!--タイトルと説明文を表示-->
         <h3><%= @post_image.post_title %></h3>

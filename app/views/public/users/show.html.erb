@@ -19,14 +19,14 @@
           <div class="user_button">
             <%= link_to "退会", edit_public_user_path(current_user.id), method: :destroy, class: "btn btn-outline-danger w-75 rounded-pill" %>
           </div>
-          
+
         <% else %>
           <% if current_user.following?(@user.id) %>
             <%= link_to "フォロー解除", public_user_relationships_path(@user.id), class: 'btn btn-primary',method: :delete, remote: true %>
           <% else %>
             <%= link_to "フォロー", public_user_relationships_path(@user.id), class: 'btn btn-outline-primary',method: :post, remote: true %>
           <% end %>
-        <% end %>  
+        <% end %>
       </div>
     </div>
     <div class="col-lg-9">
@@ -47,10 +47,6 @@
             <td class="bg-light">投稿枚数</td>
             <td class="bg-light"><%= @user.post_images.count%></td>
           </tr>
-          <tr>
-            <td>使用している画材</td>
-            <td></td>
-          </tr>
         </tbody>
       </table>
     </div>
@@ -59,11 +55,11 @@
       <% @post_images.each do |post_image| %>
         <div class="post_image_list" style="display:inline-block;text-align:center">
           <%= link_to public_item_image_post_image_path(post_image.id) do %>
-            <%= attachment_image_tag post_image, :image, width: '25%' %><br />
+            <%= attachment_image_tag post_image, :image, width: '200px', height: '200px', style: "object-fit:cover"  %><br />
             <%= post_image.title %>
           <% end %>
           <!--切り替えボタン。削除-->
-          
+
         </div>
       <% end %>
     </div>
@@ -72,8 +68,8 @@
       <p style="text-align:center">-投稿待機一覧-</p>
         <% @pending_images.each do |pending_image| %>
         <div class="pending_list" style="display:inline-block;text-align:center">
-          <%= link_to public_item_image_post_image_path(pending_image.id) do %>
-            <%= attachment_image_tag pending_image, :image, width: '25%' %><br />
+          <%= link_to public_item_image_post_image_path(pending_image.item_image_id, pending_image.id) do %>
+            <%= attachment_image_tag pending_image, :image, width: '200px', height: '200px', style: "object-fit:cover"  %><br />
             <%= pending_image.title %>
           <% end %>
         </div>
@@ -82,14 +78,17 @@
     </div>
     <div class="col-lg-12">
       <p style="text-align:center">-最新ブックマーク-</p>
-      <%# @favorite.each do |favorite| %>
+      <% @favorites.each do |favorite| %>
         <div class="favorite_list" style="display:inline-block;">
-          <%#= attachment_image_tag favorite,  :image, width: '20%' %>
-          <%#= favorite.title %>
-          
+          <%= link_to public_item_image_post_image_path(item_image_id: @post_image.item_image_id,id: @post_image.id) do %>
+            <div></div>
+            <%= attachment_image_tag favorite.post_image, :image, width: '200px', height: '200px', style: "object-fit:cover" %><br />
+            <%= favorite.post_image.title %><br />
+            <%= favorite.post_image.user.nickname %>
+          <% end %>
           <!--切替ボタン-->
         </div>
-      <%# end %>
+      <% end %>
     </div>
   </div>
 </div>

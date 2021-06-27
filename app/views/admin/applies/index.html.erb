@@ -5,7 +5,7 @@
       <% @pending_images.each do |pending_image| %>
         <div class="pending_list" style="display:inline-block;">
           <%= link_to admin_apply_path(pending_image.id) do %>
-            <%= attachment_image_tag pending_image, :image, width: '50%' %><br />
+            <%= attachment_image_tag pending_image, :image, width: '200px', height: '200px', style: "object-fit:cover"  %><br />
             <%= pending_image.title %> | 
             <%= pending_image.user.nickname %>
           <% end %>  

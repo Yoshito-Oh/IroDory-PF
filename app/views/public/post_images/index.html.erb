@@ -10,7 +10,7 @@
           <div class="post_image_link" style="display:inline-block">
             <div class="post_image_name_title", style="text-align:center">
               <%= link_to public_item_image_post_image_path(item_image_id: post_image.item_image_id,id: post_image.id) do %>
-                <%= attachment_image_tag post_image, :image, height: "150", fallback: "no_image.jpg" %><br />
+                <%= attachment_image_tag post_image, :image, width: '200px', height: '200px', style: "object-fit:cover" %><br />
                 <%= post_image.title %>
                 <br />
               <% end %>

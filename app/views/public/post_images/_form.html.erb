@@ -3,10 +3,10 @@
   <!--使用する線画-->
   <%= attachment_image_tag @item_image, :image, width: '40%', height: '40%', format: 'png' %>
   <!--投稿フォーム-->
-  <%= form_with model: @post_image, url: public_item_image_post_images_path, local: true do |f| %>
+  <%= form_with model: @post_image, url: public_item_image_post_images_path(item_image_id: @item_image.id), local: true do |f| %>
 
   <!--画像を保存する-->
-    <%= f.attachment_field :image %>
+    
     <table class="item-string">
       <tr>
         <td><p>タイトル</p></td><!--タイトル入力-->
@@ -16,9 +16,13 @@
         <td>使用した画材</td>
         <td><%= f.text_field :art_supplies %></td>
       </tr>
+      <tr>
+        <td>説明文</td>
+        <td><%= f.text_area :img_introduction %></td>
+      </tr>
     </table>
-    <p>説明文</p>
-    <%= f.text_area :img_introduction %>
+    <p></p>
+    
     <br />
     <div class="form-group">
       <% if post_image.title.blank? %>
@@ -26,7 +30,9 @@
         <%= f.submit "投稿承認依頼", class: 'btn btn-success' %>
       <% else %>
       <!--編集の場合-->
-        <%= f.submit "更新", class: 'btn btn-success'%>
+        <p>投稿した画像(※画像の変更はできません)</p>
+        <%= attachment_image_tag @post_image, :image, width: '80%', format: 'png' %><br />
+        <%= f.submit "更新", class: 'btn btn-success' %>
       <% end %>
     </div>
   <% end %>

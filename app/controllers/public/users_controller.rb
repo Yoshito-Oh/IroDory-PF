@@ -5,6 +5,8 @@ class Public::UsersController < ApplicationController
     @post_images = PostImage.where(status: true,user_id: @user.id)
     #pending_image：current_userで「status:false」のもののみ
     @pending_images = PostImage.where(status: false,user_id: @user.id)
+    @post_image = PostImage.find(params[:id])
+    @favorites = Favorite.where(user_id: @user.id)
   end
   
   def edit

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
- 
+
   get 'index/show'
   get 'index/apply'
   get 'index/reject'
@@ -14,11 +14,11 @@ Rails.application.routes.draw do
     get 'users/show'
     get 'users/edit'
     get 'users/update'
-    get 'applies/index'
-    get 'applies/show'
-    get 'applies/apply'
+
+    get 'applies/reason'
+    post 'applies/reject_update' => 'applies#reject_update'
     get 'applies/reject'
-    resources :item_images 
+    resources :item_images
     resources :post_images ,only: [:index, :show]
     resources :pending_images ,only: [:index, :show, :edit, :update]
     resources :users, only: [:index, :show, :edit, :update]
@@ -34,13 +34,13 @@ Rails.application.routes.draw do
     resources :post_images, only: [:index, :edit, :update, :destroy] do
       resource :favorites, only: [:create, :destroy]
     end
-    resources :item_images, only: [:index, :show] do 
+    resources :item_images, only: [:index, :show] do
       resources :post_images, only: [:new, :show, :create]
       get 'download' => 'item_images#download'
       post 'download' => 'item_images#download'
     end
     resources :users, only: [:show, :edit, :update, :destroy] do
-      member do 
+      member do
         get :following, :follower
       end
       resource :relationships, only: [:create, :destroy]

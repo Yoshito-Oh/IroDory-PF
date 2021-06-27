@@ -15,7 +15,7 @@
         
       </div>
       <div class="item_show">
-        <%= attachment_image_tag @item_image, :image, width: '80%', format: 'png' %>
+        <%= attachment_image_tag @item_image, :image, width: '200px', height: '200px', style: "object-fit:cover" %>
       </div>
       
       <%= link_to '一覧に戻る', admin_item_images_path, class: "btn btn-secondary" %>
