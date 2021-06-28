@@ -27,6 +27,8 @@
     <div class="form-group">
       <% if post_image.title.blank? %>
       <!--新規登録の場合-->
+        <%= f.attachment_field :image %><br />
+        <br />
         <%= f.submit "投稿承認依頼", class: 'btn btn-success' %>
       <% else %>
       <!--編集の場合-->

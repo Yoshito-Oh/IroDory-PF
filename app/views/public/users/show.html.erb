@@ -80,7 +80,7 @@
       <p style="text-align:center">-最新ブックマーク-</p>
       <% @favorites.each do |favorite| %>
         <div class="favorite_list" style="display:inline-block;">
-          <%= link_to public_item_image_post_image_path(item_image_id: @post_image.item_image_id,id: @post_image.id) do %>
+          <%= link_to public_item_image_post_image_path(item_image_id: favorite.post_image.item_image_id,id: favorite.post_image.id) do %>
             <div></div>
             <%= attachment_image_tag favorite.post_image, :image, width: '200px', height: '200px', style: "object-fit:cover" %><br />
             <%= favorite.post_image.title %><br />
