@@ -18,9 +18,3 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
-
-@import "reset";
-@import "font-awesome-sprockets";
-@import "font-awesome";
-@import "jquery.tagit";
-@import "tagit.ui-zendesk";
