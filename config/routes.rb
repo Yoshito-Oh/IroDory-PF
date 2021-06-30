@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  namespace :public do
+    get 'post_image_comments/create'
+    get 'post_image_comments/destroy'
+  end
   get 'index/show'
   get 'index/apply'
   get 'index/reject'
