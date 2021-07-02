@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  namespace :public do
-    get 'post_image_comments/create'
-    get 'post_image_comments/destroy'
-  end
   get 'index/show'
   get 'index/apply'
   get 'index/reject'
@@ -35,7 +31,9 @@ Rails.application.routes.draw do
   #ログイン時可能のアクション======================================================
   namespace :public do
     resources :post_images, only: [:index, :edit, :update, :destroy] do
+      resources :post_image_comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
+      
     end
     resources :item_images, only: [:index, :show] do
       resources :post_images, only: [:new, :show, :create]

@@ -61,15 +61,11 @@
         <% if user_signed_in? %>
           <% if @post_image.favorited_by?(current_user) %><!--すでにいいねしていたら-->
             <p>
-              <%= link_to public_post_image_favorites_path(@post_image), method: :delete, remote: true do %>
-                ♥<%= @post_image.favorites.count %>
-              <% end %>
+              <%= link_to @post_image.favorites.count, public_post_image_favorites_path(@post_image.id), method: :delete, remote: true, class: "fas fa-heart heart_red", style: "color:red" %>
             </p>
           <% else %><!--まだいいねしてなかったら-->
             <p>
-              <%= link_to public_post_image_favorites_path(@post_image), method: :post, remote: true do %>
-                ♡<%= @post_image.favorites.count %>
-              <% end %>
+              <%= link_to @post_image.favorites.count, public_post_image_favorites_path(@post_image.id), method: :post, remote: true, class: "fas fa-heart heart_blue" %>
             </p>
           <% end %>
         <% end %>  
@@ -86,20 +82,43 @@
           <%= link_to "再投稿する", public_item_image_path(@post_image.item_image_id), class: "btn btn-primary"  %>
         </div>
       <% end %>
+      <p>投稿日時：<%= @post_image.created_at %></p>
       <% if user_signed_in? %>
       <div class="item_image" style="text-align:center">
-        <%= attachment_image_tag @post_image, :image, width: '80%', format: 'png' %>
-        <p>投稿日時：<%= @post_image.created_at %></p>
-        <%= attachment_image_tag @item_image, :image, width: '80%', format: 'png' %>
+        <ul class="nav nav-tabs justify-content-center">
+          <li class="nav-item">
+            <a href="#post" class="nav-link active" data-toggle="tab">投稿イラスト</a>
+          </li>
+          <li class="nav-item">
+            <a href="#item" class="nav-link" data-toggle="tab">線画素材</a>
+          </li>
+        </ul>
+        <div class="tab-content">
+          <div id="post" class="tab-pane active">
+            <%= attachment_image_tag @post_image, :image, width: '80%', format: 'png' %>
+          </div>
+          <div id="item" class="tab-pane">
+            <%= attachment_image_tag @item_image, :image, width: '80%', format: 'png' %>
+          </div>
+        </div>
+        
+        
+        <div class="comment_form">
+          <%#= form_with(url: public_post_image_post_image_comments_path) do |f| %>
+            <%#= f.text_area :comment, rows: '1',:size => "150x5" %>
+            <%#= f.submit "コメント" %>
+          <%# end %>
+        </div>
+        <%#= render 'post_image_comments/comment', post_image: @post_image %>
+        
       </div>
       <% else %>
         <%= attachment_image_tag @post_image, :image, width: '30%', format: 'png' %>
         <p>投稿日時：<%= @post_image.created_at %></p>
+        <%#= render 'post_image_comments/comment', post_image: @post_image %>
         <%= attachment_image_tag @item_image, :image, width: '30%', format: 'png' %>
       <% end %>
     </div>
       
-    </div>
-    
   </div>
 </div>

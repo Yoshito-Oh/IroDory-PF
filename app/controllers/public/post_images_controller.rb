@@ -38,6 +38,7 @@ class Public::PostImagesController < ApplicationController
     @item_image = ItemImage.find(use_item)
     @user = @post_image.user
     @post_images = PostImage.where(user_id: @user.id).where(status: true)
+    @post_image_comment = PostImageComment.new
    # @tags = @post_image.tag_counts_on(:tags)
   end
   #===========================================================================
