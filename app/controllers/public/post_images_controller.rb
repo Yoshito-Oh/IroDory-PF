@@ -28,6 +28,10 @@ class Public::PostImagesController < ApplicationController
       @post_images = PostImage.page(params[:page]).reverse_order
       render 'index', danger: "投稿に失敗しました。"
     end
+    tags = Vision.get_image_data(@post_image.image)    
+    tags.each do |tag|
+      @post_image.tags.create(name: tag)
+    end
   end
   #==============================================
 

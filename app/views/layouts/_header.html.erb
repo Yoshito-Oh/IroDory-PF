@@ -1,66 +1,73 @@
 <header>
-  <nav class="navber navber-expand-lg header">
-    <div class="container" style="display:inline-block">
-      
-      <nav>
-        <ul class="nav nav-pills" >
-          <% if user_signed_in? %><!--会員ログインしていた場合-->
-            <div class="current_user_header" style="display:inline-block;text-align:center">
-              <li class="nav-item">
-                <%= link_to root_path do %>
-                  <%= image_tag 'logo.jpg', :size =>'208x75' %>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <nav class="navber navber-expand-lg header">
+          <div class="con">
+            <nav>
+              <ul class="nav nav-pills" >
+                <% if user_signed_in? %><!--会員ログインしていた場合-->
+                  <div class="current_user_header" style="display:inline-block;text-align:center">
+                    <li class="nav-item">
+                      <%= link_to root_path do %>
+                        <%= image_tag 'logo.jpg', :size =>'208x75' %>
+                      <% end %>
+                    </li>
+                    <li class="nav-item"><%= render 'searches/search' %></li>
+                    <li class="nav-item">
+                      <%= link_to public_item_images_path do %>
+                        <%= image_tag 'item_logo.png', :size => '99x66' %>
+                      <% end %>
+                    </li>
+                    <li class="nav-item">
+                      <%= link_to public_post_images_path do %>
+                        <%= image_tag 'new_logo.png', :size => '99x66' %>
+                      <% end %>
+                    </li>
+                    <%= link_to public_user_path(current_user.id) do %>
+                      <li class="nav-item">
+                        <%= attachment_image_tag(current_user, :profile_image, height: "40", fallback: "no_image.jpg") %><br />
+                        <%= current_user.nickname %>さん
+                      </li>
+                    <% end %>
+                    <!--deviseで追加している場合は「current_user」でよい-->
+                    <li class="nav-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-danger" %></li>
+                    <li class="nav-item"><%= link_to "前の画面に戻る", 'javascript:history.back()', class: "fas fa-undo" %></li>
+                  </div>
+                <% elsif admin_signed_in? %> <!--管理者ログインしていた場合-->
+                  <div class="current_user_header" style="display:inline-block;text-align:center">
+                    
+                    <li class="nav-item">
+                      <%= link_to root_path do %>
+                        <%= image_tag 'logo.jpg', :size =>'208x75' %>
+                      <% end %>
+                    </li>
+                    <li class="nav-item"><%= render 'searches/search' %></li>
+                    <li class="nav-item"><%= link_to "承認待機一覧", admin_applies_path, class: "btn btn-outline-secondary" %></li>
+                    <li class="nav-item"><%= link_to "ユーザ一覧", admin_users_index_path, class: "btn btn-outline-secondary "%></li>
+                    <li class="nav-item"><%= link_to "素材線画一覧", admin_item_images_path, class: "btn btn-outline-secondary" %></li>
+                    <li class="nav-item"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-danger" %></li>
+                    <li class="nav-item"><%= link_to "前の画面に戻る", 'javascript:history.back()', class: "fas fa-undo" %></li>
+                  </div>
+                <% else %>
+                  <div class="current_user_header" style="display:inline-block;text-align:center">
+                    <li class="nav-item">
+                      <%= link_to root_path do %>
+                        <%= image_tag 'logo.jpg', :size =>'208x75' %>
+                      <% end %>
+                    </li>
+                    <li class="nav-item"><%= render 'searches/search' %></li>
+                    <p style="display:inline-block">こんにちは ゲストさん</p>
+                    <li class="nav-item"><%= link_to "ログイン",new_user_session_path, class: "btn btn-primary" %></li>
+                    <li class="nav-item"><%= link_to "新規登録",new_user_registration_path, class: "btn btn-primary" %></li>
+                    <li class="nav-item"><%= link_to "前の画面に戻る", 'javascript:history.back()', class: "fas fa-undo" %></li>
+                  </div>
                 <% end %>
-              </li>
-              <li class="nav-item"><%= render 'searches/search' %></li>
-              <li class="nav-item">
-                <%= link_to public_item_images_path do %>
-                  <%= image_tag 'item_logo.png', :size => '99x66' %>
-                <% end %>
-              </li>
-              <li class="nav-item">
-                <%= link_to public_post_images_path do %>
-                  <%= image_tag 'new_logo.png', :size => '99x66' %>
-                <% end %>
-              </li>
-              <%= link_to public_user_path(current_user.id) do %>
-                <li class="nav-item"><%= attachment_image_tag(current_user, :profile_image, height: "50", fallback: "no_image.jpg") %></li>
-                <li class="nav-item"><p><%= current_user.nickname %>さん</p></li>
-              <% end %>
-              <!--deviseで追加している場合は「current_user」でよい-->
-              <li class="nav-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-danger" %></li>
-              <li class="nav-item"><%= link_to "前の画面に戻る", 'javascript:history.back()', class: "fas fa-undo" %></li>
-            </div>
-          <% elsif admin_signed_in? %> <!--管理者ログインしていた場合-->
-            <div class="current_user_header" style="display:inline-block;text-align:center">
-              
-              <li class="nav-item">
-                <%= link_to root_path do %>
-                  <%= image_tag 'logo.jpg', :size =>'208x75' %>
-                <% end %>
-              </li>
-              <li class="nav-item"><%= render 'searches/search' %></li>
-              <li class="nav-item"><%= link_to "承認待機一覧", admin_applies_path, class: "btn btn-outline-secondary" %></li>
-              <li class="nav-item"><%= link_to "ユーザ一覧", admin_users_index_path, class: "btn btn-outline-secondary "%></li>
-              <li class="nav-item"><%= link_to "素材線画一覧", admin_item_images_path, class: "btn btn-outline-secondary" %></li>
-              <li class="nav-item"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-danger" %></li>
-              <li class="nav-item"><%= link_to "前の画面に戻る", 'javascript:history.back()', class: "fas fa-undo" %></li>
-            </div>
-          <% else %>
-            <div class="current_user_header" style="display:inline-block;text-align:center">
-              <li class="nav-item">
-                <%= link_to root_path do %>
-                  <%= image_tag 'logo.jpg', :size =>'208x75' %>
-                  <% end %>
-              </li>
-              <li class="nav-item"><%= render 'searches/search' %></li>
-              <p style="display:inline-block">こんにちは ゲストさん</p>
-              <li class="nav-item"><%= link_to "ログイン",new_user_session_path, class: "btn btn-primary" %></li>
-              <li class="nav-item"><%= link_to "新規登録",new_user_registration_path, class: "btn btn-primary" %></li>
-              <li class="nav-item"><%= link_to "前の画面に戻る", 'javascript:history.back()', class: "fas fa-undo" %></li>
-            </div>
-          <% end %>
-        </ul>
-      </nav>
+              </ul>
+            </nav>
+          </div>
+        </nav>
+      </div>
     </div>
-  </nav>
+  </div>
 </header>

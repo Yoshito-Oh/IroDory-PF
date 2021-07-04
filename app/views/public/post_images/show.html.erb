@@ -83,6 +83,9 @@
         </div>
       <% end %>
       <p>投稿日時：<%= @post_image.created_at %></p>
+      <% @post_image.tags.each do |tag| %>
+        <span class="label"> <%= tag.name %></span>
+      <% end %>
       <% if user_signed_in? %>
       <div class="item_image" style="text-align:center">
         <ul class="nav nav-tabs justify-content-center">
@@ -95,7 +98,9 @@
         </ul>
         <div class="tab-content">
           <div id="post" class="tab-pane active">
+            <div id="modal-content">
             <%= attachment_image_tag @post_image, :image, width: '80%', format: 'png' %>
+            </div>
           </div>
           <div id="item" class="tab-pane">
             <%= attachment_image_tag @item_image, :image, width: '80%', format: 'png' %>

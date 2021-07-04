@@ -13,6 +13,24 @@
         <br />
           <!--フォロー・フォロワー数-->
         <% if current_user.id == @user.id %>
+          <table style="text-align:center">
+            <tr>
+              <td>フォロー</td>
+              <td>
+                <%= link_to following_public_user_path(@user) do %>
+                  <%= @user.followings.count %>
+                <% end %>
+              </td>
+            </tr>
+            <tr>
+              <td>フォロワー</td>
+              <td>
+                <%= link_to follower_public_user_path(@user) do %>
+                  <%= @user.followers.count %>
+                <% end %>
+              </td>
+            </tr>
+          </table>
           <div class="user_button">
             <%= link_to "編集", edit_public_user_path(current_user.id), class: "btn btn-outline-secondary w-75 rounded-pill" %><br />
           </div>
@@ -21,7 +39,7 @@
           </div>
 
         <% else %>
-          <% if current_user.following?(@user.id) %>
+          <% if current_user.following?(@user) %>
             <%= link_to "フォロー解除", public_user_relationships_path(@user.id), class: 'btn btn-primary',method: :delete, remote: true %>
           <% else %>
             <%= link_to "フォロー", public_user_relationships_path(@user.id), class: 'btn btn-outline-primary',method: :post, remote: true %>
