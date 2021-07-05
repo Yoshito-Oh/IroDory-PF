@@ -7,6 +7,7 @@ module Vision
     def get_image_data(image_file)
       # APIのURL作成
       api_url = "https://vision.googleapis.com/v1/images:annotate?key=#{ENV['GOOGLE_API_KEY']}"
+      #この箇所において.envにGoogle APIキーが本番環境で取得できない場合がある。その時はviで確認をし、なければviコマンドで .envに追加する必要がある
 
       # 画像をbase64にエンコード
       base64_image = Base64.encode64(open("#{Rails.root}/public/uploads/#{image_file.id}").read)
