@@ -1,6 +1,6 @@
 <!--プロフィールのヘッダーを入れる場所-->
 <div class="user_header" style="background-color:purple;">
-  <%= attachment_image_tag(@user, :profile_header, width: '100%',height: '250px', fallback: "no_image.jpg") %>
+  <%= attachment_image_tag(@user, :profile_header, width: '100%',height: '300px', fallback: "no_image.jpg") %>
 </div>
 <br />
 <div class="container">
@@ -35,7 +35,7 @@
             <%= link_to "編集", edit_public_user_path(current_user.id), class: "btn btn-outline-secondary w-75 rounded-pill" %><br />
           </div>
           <div class="user_button">
-            <%= link_to "退会", edit_public_user_path(current_user.id), method: :destroy, class: "btn btn-outline-danger w-75 rounded-pill" %>
+            <%= link_to "退会", public_user_path(current_user.id), method: :delete, class: "btn btn-outline-danger w-75 rounded-pill" %>
           </div>
 
         <% else %>

@@ -14,7 +14,7 @@
     </tr>
     <tr>
       <% if post_image_comment.user == current_user %>
-        <%= link_to '削除', public_post_image_comments_destroy_path(@post_image, post_image_comment), method: :delete, remote: true, class: 'btn btn-danger' %>
+        <%= link_to 'ｺﾒﾝﾄ削除', public_post_image_comments_destroy_path(@post_image, post_image_comment), method: :delete, remote: true, class: 'btn btn-danger' %>
       <% end %>
     </tr>
   <% end %>

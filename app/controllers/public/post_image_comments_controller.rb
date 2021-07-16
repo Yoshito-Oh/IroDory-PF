@@ -15,7 +15,7 @@ class Public::PostImageCommentsController < ApplicationController
     post_image_comment.destroy
   end
   
-  private
+  private#ストロングパラメータ=============================================
   
   def post_image_comment_params
     params.require(:post_image_comment).permit(:comment)
