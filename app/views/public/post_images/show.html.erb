@@ -7,9 +7,9 @@
         <%= @post_image.user.nickname %><br />
       <% end %>
       <%= @post_image.user.introduction %><br />
-      <div class="relationships_field">
+      <div class="relationships_field" style="text-align:center">
         <% if user_signed_in? %>
-          <table>
+          <table class="following_list">
             <tr>
               <td>フォロー</td>
               <td>

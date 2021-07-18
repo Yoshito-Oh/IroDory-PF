@@ -54,6 +54,10 @@
         </thead>
         <tbody>
           <tr>
+            <td class="gn-light">ユーザネーム</td>
+            <td class="gn-light"><%= @user.name %></td>
+          </tr>
+          <tr>
             <td class="bg-light">ユーザニックネーム</td>
             <td class="bg-light"><%= @user.nickname %></td>
           </tr>
@@ -76,7 +80,6 @@
             <%= attachment_image_tag post_image, :image, width: '200px', height: '200px', style: "object-fit:cover"  %><br />
             <%= post_image.title %>
           <% end %>
-          <!--切り替えボタン。削除-->
 
         </div>
       <% end %>
