@@ -33,7 +33,7 @@
       <% else %>
       <!--編集の場合-->
         <p>投稿した画像(※画像の変更はできません)</p>
-        <%= attachment_image_tag @post_image, :image, width: '80%', format: 'png' %><br />
+        <%= attachment_image_tag @post_image, :image, width: '80%' %><br />
         <%= f.submit "更新", class: 'btn btn-success' %>
       <% end %>
     </div>

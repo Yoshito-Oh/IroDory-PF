@@ -19,28 +19,27 @@
         </thead>
         <tbody>
           <tr>
-            <td class="gn-light">ユーザ氏名</td>
-            <td class="gn-light"><%= f.text_field :name %></td>
+            <td class="gn-light" width="30%">ユーザ氏名</td>
+            <td class="gn-light" width="70%"><%= f.text_field :name,class: "form-control-file name" %></ %></td>
           </tr>
           <tr>
-            <td class="bg-light">ユーザニックネーム</td>
-            <td class="bg-light"><%= f.text_field :nickname, class: "form-control-file nickname" %></td>
+            <td class="bg-light" width="30%">ユーザニックネーム</td>
+            <td class="bg-light" width="70%"><%= f.text_field :nickname, class: "form-control-file nickname" %></td>
           </tr>
           <tr>
-            <td class="gn-light">自己紹介</td>
-            <td class="gn-light"><%= f.text_area :introduction, class: "form-control introduction" %></td>
+            <td class="gn-light" width="30%">自己紹介</td>
+            <td class="gn-light" width="70%"><%= f.text_area :introduction, class: "form-control introduction" %></td>
           </tr>
           <tr>
-            <td class="bg-light">普段使用している画材</td>
-            <td class="bg-light"><%#= f.text_field %></td>
-          </tr>
-          <tr>
-            <td class="gn-lingt">性別</td>
-            <td class="bn-light"><%= @user.sex %></td>
+            <td class="bg-light" width="30%">普段使用している画材</td>
+            <td class="bg-light" width="70%"><%#= f.text_field %></td>
           </tr>
         </tbody>
       </table>
-      <%= f.submit "更新", class: 'btn btn-success'%>
+      <div class="update_button" style="text-align:center">
+        <%= f.submit "更新", class: 'btn btn-success'%>
+      </div>
+      
     </div>
   </div>
 </div>
