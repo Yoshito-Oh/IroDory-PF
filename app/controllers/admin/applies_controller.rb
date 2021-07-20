@@ -6,6 +6,8 @@ class Admin::AppliesController < ApplicationController
   def show
     #showについては1件の情報のみ取得したい
     @pending_image = PostImage.where(status: false).find(params[:id])
+    @user = @pending_image.user
+    @post_images = PostImage.where(user_id: @user.id).where(status: true)
   end
 
   def update

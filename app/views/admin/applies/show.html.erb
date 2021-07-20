@@ -1,9 +1,34 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-3">
-      <%= attachment_image_tag(@pending_image.user, :profile_image, :size => "200x200", fallback: "no_image.jpg") %>
-      <%= @pending_image.user.nickname %>
-      <%= @pending_image.user.introduction%>
+      <div class="user_info_table">
+          <%= link_to admin_user_path(@pending_image.user) do %>
+            <%= attachment_image_tag(@pending_image.user, :profile_image, :size => "200x200", fallback: "no_image.jpg") %><br />
+            <%= @pending_image.user.nickname %>
+          <% end %>
+          <%= @pending_image.user.introduction%>
+      </div>
+      <div class="old_post_image">
+
+        <p>-ユーザの過去作品-</p>
+        <table>
+          <tbody>
+            <% @post_images.each do |post_image| %>
+              <tr>
+                <td>
+                   <%= attachment_image_tag post_image, :image, width: '80%' %>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <%= post_image.title %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+      </div>
     </div>
     <div class="col-lg-9" style="background-color:white">
 
