@@ -42,7 +42,6 @@
           
           <div class="download_and_post">
             <%= button_to "線画PNGをダウンロード",public_item_image_download_path(@item_image.id),method: :get, class: "btn btn-secondary" %><br />
-            <!--便宜上、admin側の詳細ページに飛ばすが、DLする-->
             <%= link_to "この素材でイラストを投稿", new_public_item_image_post_image_path(@item_image.id), class: "btn btn-outline-primary" %>
           </div>
         <% else %>

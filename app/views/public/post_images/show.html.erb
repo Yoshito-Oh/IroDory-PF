@@ -39,7 +39,7 @@
         <% end %>
       </div>
       <div class="this_user_list" style="margin-top:30px;">
-        <p>-このユーザーのイラスト-</p>
+        <p>-<%= @post_image.user.nickname %>さんのイラスト-</p>
         <% @post_images.each do |post_image| %>
           <div class="post_list" style="display:inline-block">
             <%= link_to public_item_image_post_image_path(post_image.id) do %>

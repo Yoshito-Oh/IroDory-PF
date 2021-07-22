@@ -13,7 +13,12 @@
  *= require_tree .
  *= require_self
  *= require dropzone
+ 
+ *= require dropzone/basic
+ *= require dropzone/dropzone
  */
+ 
+ 
  @import "bootstrap";
 
 header{
