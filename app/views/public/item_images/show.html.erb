@@ -34,9 +34,6 @@
 
       <div class="item_image" style="text-align:center">
         <!--タグで投稿絵と線画素材を切り替える-->
-        
-        
-
         <% if user_signed_in? %>
           <%= attachment_image_tag @item_image, :image, width: '80%', height: '80%', format: 'png' %>
           

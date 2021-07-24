@@ -77,8 +77,12 @@
         <%#= render 'post_image_comments/comment', post_image: @post_image %>
         <%= attachment_image_tag @item_image, :image, width: '30%', format: 'png' %>
       <% end %>
-        <div class="this_item_list">
-        <p>-この素材を使用したイラスト-</p>
+      <div class="empty">
+        <br />
+        <br />
+      </div>
+      <div class="this_item_list">
+        <p style="text-align:center">-この素材を使用したイラスト-</p>
         <% @post_images.each do |post_image| %>
           <div class="aaa" style="display:inline-block;text-align:center">
             <%= link_to public_item_image_post_image_path(post_image.id) do %>
@@ -89,6 +93,5 @@
         <% end %>
       </div>
     </div>
-
   </div>
 </div>

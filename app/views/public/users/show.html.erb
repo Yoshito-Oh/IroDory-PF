@@ -53,64 +53,73 @@
           <tr class="table_head">user infomation</tr>
         </thead>
         <tbody>
+          <% if current_user.id == @user.id %>
           <tr>
-            <td class="gn-light">ユーザネーム</td>
-            <td class="gn-light"><%= @user.name %></td>
+            <!--ログインユーザと一致した場合のみ名前を表示する-->
+            <td class="gn-light" width="30%">ユーザネーム</td>
+            <td class="gn-light" width="70%"><%= @user.name %></td>
+          </tr>
+          <% end %>
+          <tr>
+            <td class="bg-light" width="30%">ユーザニックネーム</td>
+            <td class="bg-light" width="70%"><%= @user.nickname %></td>
           </tr>
           <tr>
-            <td class="bg-light">ユーザニックネーム</td>
-            <td class="bg-light"><%= @user.nickname %></td>
+            <td class="gn-light" width="30%">全投稿枚数</td>
+            <td class="gn-light" width="70%"><%= @user.post_images.count %></td>
           </tr>
           <tr>
-            <td class="gn-light">自己紹介</td>
-            <td class="gn-light"><%= @user.introduction %></td>
+            <td class="bg-light" width="30%">　(承認数)</td>
+            <td class="bg-light" width="70%">(<%= @post_images.count %>)</td>
           </tr>
-          <!--普段使用している画材-->
           <tr>
-            <td class="bg-light">投稿枚数</td>
-            <td class="bg-light"><%= @user.post_images.count%></td>
+            <td class="gn-light" width="30%">　(未承認数)</td>
+            <td class="gn-light" width="70%">(<%= @pending_images.count %>)</td>
+          </tr>
+          <tr height="100">
+            <td class="bg-light" width="30%">自己紹介</td>
+            <td class="bg-light" width="70%"><%= @user.introduction %></td>
           </tr>
         </tbody>
       </table>
-    </div>
-    <div class="col-lg-12">
-      <p style="text-align:center">-投稿一覧-</p>
-      <% @post_images.each do |post_image| %>
-        <div class="post_image_list" style="display:inline-block;text-align:center">
-          <%= link_to public_item_image_post_image_path(post_image.id) do %>
-            <%= attachment_image_tag post_image, :image, width: '200px', height: '200px', style: "object-fit:cover"  %><br />
-            <%= post_image.title %>
-          <% end %>
-
-        </div>
-      <% end %>
-    </div>
-    <div class="col-lg-12">
-      <% if current_user.id == @user.id %>
-      <p style="text-align:center">-投稿待機一覧-</p>
-        <% @pending_images.each do |pending_image| %>
-        <div class="pending_list" style="display:inline-block;text-align:center">
-          <%= link_to public_item_image_post_image_path(pending_image.item_image_id, pending_image.id) do %>
-            <%= attachment_image_tag pending_image, :image, width: '200px', height: '200px', style: "object-fit:cover"  %><br />
-            <%= pending_image.title %>
-          <% end %>
-        </div>
+      <div class="post_image_list">
+        <p style="text-align:center">-投稿一覧-</p>
+        <% @post_images.each do |post_image| %>
+          <div class="post_image_list" style="display:inline-block;text-align:center">
+            <%= link_to public_item_image_post_image_path(post_image.id) do %>
+              <%= attachment_image_tag post_image, :image, width: '200px', height: '200px', style: "object-fit:cover"  %><br />
+              <%= post_image.title %>
+            <% end %>
+          </div>
         <% end %>
-      <% end %>
-    </div>
-    <div class="col-lg-12">
-      <p style="text-align:center">-最新ブックマーク-</p>
-      <% @favorites.each do |favorite| %>
-        <div class="favorite_list" style="display:inline-block;">
-          <%= link_to public_item_image_post_image_path(item_image_id: favorite.post_image.item_image_id,id: favorite.post_image.id) do %>
-            <div></div>
-            <%= attachment_image_tag favorite.post_image, :image, width: '200px', height: '200px', style: "object-fit:cover" %><br />
-            <%= favorite.post_image.title %><br />
-            <%= favorite.post_image.user.nickname %>
+      </div>
+      <div class="pending_images_list">
+        <% if current_user.id == @user.id %>
+        <p style="text-align:center">-投稿待機一覧-</p>
+          <% @pending_images.each do |pending_image| %>
+          <div class="pending_list" style="display:inline-block;text-align:center">
+            <%= link_to public_item_image_post_image_path(pending_image.item_image_id, pending_image.id) do %>
+              <%= attachment_image_tag pending_image, :image, width: '200px', height: '200px', style: "object-fit:cover"  %><br />
+              <%= pending_image.title %>
+            <% end %>
+          </div>
           <% end %>
-          <!--切替ボタン-->
-        </div>
-      <% end %>
+        <% end %>
+      </div>
+    <div class="favorite_list">
+      <p style="text-align:center">-最新ブックマーク-</p>
+        <% @favorites.each do |favorite| %>
+          <div class="favorite_list" style="display:inline-block;">
+            <%= link_to public_item_image_post_image_path(item_image_id: favorite.post_image.item_image_id,id: favorite.post_image.id) do %>
+              <div></div>
+              <%= attachment_image_tag favorite.post_image, :image, width: '200px', height: '200px', style: "object-fit:cover" %><br />
+              <%= favorite.post_image.title %><br />
+              <%= favorite.post_image.user.nickname %>
+            <% end %>
+            <!--切替ボタン-->
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
