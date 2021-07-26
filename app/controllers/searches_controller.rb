@@ -5,7 +5,7 @@ class SearchesController < ApplicationController
     
     unless @word == nil
       if @range == "投稿画像"
-        @post_image = PostImage.where(['title LIKE ? ',  "%#{@word}%"])
+        @post_image = PostImage.where(['title LIKE ? ',  "%#{@word}%"]).where(status: 'true')
       elsif @range == "線画素材"
         @item_image = ItemImage.where(['item_title LIKE ?', "%#{@word}%"])
       else #Userだったら
@@ -13,7 +13,7 @@ class SearchesController < ApplicationController
       end
     else
       
-      render 'search'
+      render '_search'
     end
   end
 end

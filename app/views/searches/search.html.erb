@@ -6,37 +6,58 @@
             <p>"<%= @word %>"の検索結果</p>
           </div>
         <% if @range == "投稿画像" %>
+          <%= @range %>一覧<br />
           <% @post_image.each do |post_image| %>
           <!--「投稿画像」を選択された場合-->
-            <%= @range %>一覧<br />
-
-            <%= link_to public_item_image_post_image_path(item_image_id: post_image.item_image_id,id: post_image.id) do %>
-              <%= attachment_image_tag post_image, :image, width: '200px', height: '200px', style: "object-fit:cover"  %>
-              <p><%= post_image.title %></p>
-              <%= post_image.user.nickname %>
-            <% end %>
-            <br />
+            <div class="search_item" style="display:inline-block">
+              <%= link_to public_item_image_post_image_path(item_image_id: post_image.item_image_id,id: post_image.id) do %>
+                <%= attachment_image_tag post_image, :image, width: '200px', height: '200px', style: "object-fit:cover"  %>
+                <p><%= post_image.title %></p>
+                <%= post_image.user.nickname %>
+              <% end %>
+            </div>
           <% end %>
         <% elsif @range == "線画素材" %><!--線画素材が選択された場合-->
           <%= @range %>一覧<br />
           <% @item_image.each do |item_image| %>
-            <%= link_to public_item_image_path(item_image.id) do %>
-              <%= attachment_image_tag item_image, :image, width: '200px', height: '200px', style: "object-fit:cover"  %><br />
-              <%= item_image.item_title %>
-            <% end %>
-            <br />
+            <div class="search_item" style="display:inline-block">
+              <%= link_to public_item_image_path(item_image.id) do %>
+                <%= attachment_image_tag item_image, :image, width: '200px', height: '200px', style: "object-fit:cover"  %><br />
+                <%= item_image.item_title %>
+              <% end %>
+            </div>
           <% end %>
         <% else %><!--ユーザ検索-->
           <%= @range %>一覧<br />
-          <% @user.each do |user| %>
-            <%= link_to public_user_path(user.id) do %>
-              <%= attachment_image_tag user, :profile_image, :size => "100x100", fallback: "no_image.jpg" %><br />
-              <%= user.nickname %>
-            <% end %>
-            <br />
-          <% end %>
+          <table width="75%">
+            <thead>
+              <tr>
+                <th width="25%" style="text-align:center">image</th>
+                <th width="50%" style="text-align:center">profile</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @user.each do |user| %>
+                <tr>
+                  <td>
+                    <div class="profile_image" style="text-align:center">
+                      <%= attachment_image_tag(user, :profile_image, :size => "100x100", fallback: "no_image.jpg") %>
+                    </div>
+                  </td>
+                  <td>
+                    <%= link_to public_user_path(user) do %>
+                      <h4><%= user.nickname %><br /></h4>
+                    <% end %>
+                    フォロー：<%= link_to following_public_user_path(user) do %><%= user.followings.count %><% end %><br />
+                    フォロワー：<%= link_to follower_public_user_path(user) do %><%= user.followers.count %><% end %><br />
+                    <p><%= user.introduction %></p>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
         <% end %>
-      </table>
+      </div>  
     </div>
   </div>
 </div>
