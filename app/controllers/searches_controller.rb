@@ -12,8 +12,7 @@ class SearchesController < ApplicationController
         @user = User.where(['nickname LIKE ? ',  "%#{@word}%"])
       end
     else
-      
-      render '_search'
+      redirect_to request.referer and return
     end
   end
 end

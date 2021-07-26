@@ -3,8 +3,8 @@
     <div class="col-lg-12">
       <table class="table table-hover table-inverse">
         <div class="search_top">
-            <p>"<%= @word %>"の検索結果</p>
-          </div>
+          <p>"<%= @word %>"の検索結果</p>
+        </div>
         <% if @range == "投稿画像" %>
           <%= @range %>一覧<br />
           <% @post_image.each do |post_image| %>
@@ -57,7 +57,6 @@
             </tbody>
           </table>
         <% end %>
-      </div>  
     </div>
   </div>
 </div>
