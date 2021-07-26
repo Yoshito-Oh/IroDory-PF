@@ -12,6 +12,7 @@ class SearchesController < ApplicationController
         @user = User.where(['nickname LIKE ? ',  "%#{@word}%"])
       end
     else
+      
       render 'search'
     end
   end
