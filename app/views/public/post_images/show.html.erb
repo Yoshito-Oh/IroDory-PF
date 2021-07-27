@@ -36,12 +36,17 @@
         </div>
       <% end %>
       <p>投稿日時：<%= @post_image.created_at %></p>
+      <br />
+      
+      <p>AIが認識した情報：</p>
       <% @post_image.tags.each do |tag| %>
-        <span class="label"> <%= tag.name %></span>
+       ,<span class="label"> <%= tag.name %></span>
       <% end %>
+      <br />
+      <br />
       <% if user_signed_in? %>
       <div class="item_image" style="text-align:center">
-        <ul class="nav nav-tabs justify-content-center">
+        <ul class="nav nav-tabs nav-fill justify-content-center">
           <li class="nav-item">
             <a href="#post" class="nav-link active" data-toggle="tab">投稿イラスト</a>
           </li>
