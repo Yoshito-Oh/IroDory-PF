@@ -12,7 +12,6 @@
         <%= @user.nickname %>
         <br />
           <!--フォロー・フォロワー数-->
-        <% if current_user.id == @user.id %>
           <table style="text-align:center">
             <tr>
               <td>フォロー</td>
@@ -31,6 +30,8 @@
               </td>
             </tr>
           </table>
+        <% if current_user.id == @user.id %>
+          
           <div class="user_button">
             <%= link_to "編集", edit_public_user_path(current_user.id), class: "btn btn-outline-secondary w-75 rounded-pill" %><br />
           </div>
