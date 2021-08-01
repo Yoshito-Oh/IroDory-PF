@@ -24,11 +24,10 @@
                         <%= image_tag 'new_logo.png', :size => '99x66' %>
                       <% end %>
                     </li>
-
+                    <li class="nav-item"><%= attachment_image_tag(current_user, :profile_image, height: "40", fallback: "no_image.jpg") %></li>
                     <li class="nav-item">
                       <%= link_to public_user_path(current_user.id),class:"mt-5" do %>
                       <div>
-                        <div><%= attachment_image_tag(current_user, :profile_image, height: "40", fallback: "no_image.jpg") %></div>
                         <div style="text-align:bottom"><%= current_user.nickname %>さん</div>
                       </div>
                       <% end %>
