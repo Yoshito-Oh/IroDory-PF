@@ -26,14 +26,14 @@
                     </li>
                     <li class="nav-item"><%= attachment_image_tag(current_user, :profile_image, height: "40", fallback: "no_image.jpg") %></li>
                     <li class="nav-item">
-                      <%= link_to public_user_path(current_user.id),class:"mt-5" do %>
+                      <%= link_to public_user_path(current_user.id),class: "mt-5" do %>
                       <div>
                         <div style="text-align:bottom"><%= current_user.nickname %>さん</div>
                       </div>
                       <% end %>
                     </li>
                     <!--deviseで追加している場合は「current_user」でよい-->
-                    <li class="nav-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-danger" %></li>
+                    <li class="nav-item"><%= link_to "logout", destroy_user_session_path, method: :delete, class: "btn btn-outline-danger" %></li>
                     <li class="nav-item"><%= link_to "前の画面に戻る", 'javascript:history.back()', class: "fas fa-undo" %></li>
                   </div>
                 <% elsif admin_signed_in? %> <!--管理者ログインしていた場合-->
