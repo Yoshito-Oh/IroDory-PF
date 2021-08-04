@@ -94,3 +94,10 @@ span{
 .following_list{
   width: auto;
 }
+
+/*レスポンシブ対応=====================*/
+@media (max-width:1192px){
+    .left_cont{
+        display: none;
+    }
+}

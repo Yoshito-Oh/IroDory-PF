@@ -5,6 +5,7 @@ class Public::ItemImagesController < ApplicationController
 
   def show
     @item_image = ItemImage.find(params[:id])
+    @current_user_post_image = PostImage.where(status: true).where(user_id: current_user.id)
     @post_images = PostImage.where(status: true).where(item_image_id: @item_image.id)
   end
 
