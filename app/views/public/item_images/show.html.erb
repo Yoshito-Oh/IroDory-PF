@@ -5,12 +5,14 @@
       <% if user_signed_in? %>
       <!--投稿した人の自己紹介とほかの作品が表示される-->
         <div class="profile_infomation">
-          <%= attachment_image_tag(current_user, :profile_image, :size =>"200x200", fallback: "no_image.jpg") %><br />
-          <%= current_user.name %><br />
+          <div class="profile_image" style="text-align:center">
+            <%= attachment_image_tag(current_user, :profile_image, :size =>"200x200", fallback: "no_image.jpg") %>
+          </div>
+          <p style="text-align:center"><%= current_user.name %></p><br />
           <%= current_user.introduction %>
         </div>
-        <table>
-          <tbody>
+        <table class="follow_table">
+          <tbody style="text-align:center">
             <tr>
               <td>フォロー:</td>
               <td>
@@ -20,7 +22,7 @@
               </td>
             </tr>
             <tr>
-              <td>フォロワー</td>
+              <td>フォロワー:</td>
               <td>
                 <%= link_to follower_public_user_path(current_user) do %>
                   <%= current_user.followers.count %>
@@ -66,9 +68,19 @@
       <div class="item_image" style="text-align:center">
         <!--タグで投稿絵と線画素材を切り替える-->
         <p>投稿日時：<%= @item_image.created_at %></p>
+        
         <% if user_signed_in? %>
-          <%= attachment_image_tag @item_image, :image, width: '80%', height: '80%', format: 'png' %>
-          
+          <ul class="nav nav-tabs nav-fill justify-content-center">
+            <li class="nav-item">
+              <a href="#item" class="nav-link active" data-toggle="tab">線画素材</a>
+            </li>
+          </ul>
+          <div class="tab-content">
+            <div id="item" class="tab-pane active">
+              <%= attachment_image_tag @item_image, :image, width: '80%', height: '80%', format: 'png' %>
+            </div>
+          </div>
+          <br />
           <div class="download_and_post">
             <%= button_to "線画PNGをダウンロード",public_item_image_download_path(@item_image.id),method: :get, class: "btn btn-secondary" %><br />
             <%= link_to "この素材でイラストを投稿", new_public_item_image_post_image_path(@item_image.id), class: "btn btn-outline-primary" %>

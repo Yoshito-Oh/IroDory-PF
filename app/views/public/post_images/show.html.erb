@@ -77,10 +77,11 @@
 
       </div>
       <% else %>
-        <%= attachment_image_tag @post_image, :image, width: '30%', format: 'png' %>
         <p>投稿日時：<%= @post_image.created_at %></p>
-        <%#= render 'post_image_comments/comment', post_image: @post_image %>
-        <%= attachment_image_tag @item_image, :image, width: '30%', format: 'png' %>
+        <div class="unlogin_image" style="display:inline-block;text-align:center">
+          <%= attachment_image_tag @post_image, :image, width: '30%', format: 'png' %>
+          <%= attachment_image_tag @item_image, :image, width: '30%', format: 'png' %>
+        </div>      
       <% end %>
       <div class="empty">
         <br />
