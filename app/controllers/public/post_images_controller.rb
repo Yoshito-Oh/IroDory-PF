@@ -58,7 +58,12 @@ class Public::PostImagesController < ApplicationController
       #更新ができなかったときは、編集前のedit画面に戻す
     end
   end
-
+  
+  def destroy
+    @post_image = PostImage.find(params[:id])
+    @post_image.destroy
+    redirect_to  public_item_image_path(@post_image.item_image_id)
+  end
 
   private #ストロングパラメータ=================================================
   def post_image_params
