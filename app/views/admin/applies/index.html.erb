@@ -6,8 +6,12 @@
         <div class="pending_list" style="display:inline-block;">
           <%= link_to admin_apply_path(pending_image.id) do %>
             <%= attachment_image_tag pending_image, :image, width: '200px', height: '200px', style: "object-fit:cover"  %><br />
-            <%= pending_image.title %> | 
-            <%= pending_image.user.nickname %>
+            <div class="pending_image_info" style="text-align:center">
+              <%= pending_image.title %> <br />
+              <%= attachment_image_tag pending_image.user, :profile_image, width: '40px', height: '40px', fallback: "no_image.jpg" %>
+              <%= pending_image.user.nickname %>
+            </div>
+            <br />
           <% end %>  
         </div>
       <% end %>
