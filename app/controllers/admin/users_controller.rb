@@ -9,6 +9,7 @@ class Admin::UsersController < ApplicationController
   def show
     @user = User.find_by(params[:id])
     @post_images = PostImage.where(user_id: @user.id, status: true)
+    @pending_images = PostImage.where(status: false, user_id: @user.id)
   end
 
   def edit

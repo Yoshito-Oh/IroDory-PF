@@ -57,8 +57,9 @@ body{
   background-color: white;
   border-bottom: inset 2px #E7F1ED;
 }
-.pending_list{
-  display: inline-block;
+.pending_image_list{
+  display: flex;
+  justify-content: space-between
 }
 .image_list{
   display: inline-block;
