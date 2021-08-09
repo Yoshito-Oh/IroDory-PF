@@ -2,6 +2,8 @@ class Admin::UsersController < ApplicationController
  #(管理者側)ユーザー一覧====================
   def index
     @users = User.all
+    #@user = User.find(params[:id])
+    #@post_images = PostImage.where(status: true, user_id: @user.id)
   end
   #=========================================
   
