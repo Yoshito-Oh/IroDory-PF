@@ -1,14 +1,24 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-3">
-      <div class="user_info_table">
+      <table class="user_info_table" style="text-align:center">
+        <tbody>
           <%= link_to admin_user_path(@pending_image.user) do %>
-            <%= attachment_image_tag(@pending_image.user, :profile_image, :size => "200x200", fallback: "no_image.jpg") %><br />
+          <tr>
+            <%= attachment_image_tag(@pending_image.user, :profile_image, :size => "200x200", fallback: "no_image.jpg") %>
+          </tr>
+          <br />
+          <tr>
             <%= @pending_image.user.nickname %>
+          </tr>
           <% end %>
-          <%= @pending_image.user.introduction%>
-      </div>
-      <div class="old_post_image">
+          <br />
+          <tr>
+            <%= @pending_image.user.introduction %>
+          </tr>
+        </tbody>
+      </table>
+      <div class="old_post_image" style="text-align:center">
         <p>-ユーザの過去作品-</p>
         <table>
           <tbody>
