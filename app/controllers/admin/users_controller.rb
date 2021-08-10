@@ -2,11 +2,9 @@ class Admin::UsersController < ApplicationController
  #(管理者側)ユーザー一覧====================
   def index
     @users = User.all
-    #@user = User.find(params[:id])
-    #@post_images = PostImage.where(status: true, user_id: @user.id)
   end
   #=========================================
-  
+
   #管理者側のユーザ詳細画面=================
   def show
     @user = User.find_by(params[:id])
@@ -27,9 +25,9 @@ class Admin::UsersController < ApplicationController
     end
   end
   #==========================================
-  
+
   private #ストロングパラメータ=======================
-  
+
   def user_params
     params.require(:user).permit(:status)
     #管理者側が変更できるのは退会ステータスのみのため

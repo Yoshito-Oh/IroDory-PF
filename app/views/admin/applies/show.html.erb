@@ -40,12 +40,28 @@
     </div>
     <div class="col-lg-9" style="background-color:white">
         <!--タイトルと説明文を表示-->
-        <h3><%= @pending_image.title %></h3>
-        <p><%= @pending_image.img_introduction %></p>
+      <h3><%= @pending_image.title %></h3>
+      <p><%= @pending_image.img_introduction %></p>
+      <p>投稿日時：<%= @pending_image.created_at %></p>
       <div class="item_image" style="text-align:center">
-        <!--タグで投稿絵と線画素材を切り替える-->
-        <%= attachment_image_tag @pending_image, :image, width: '80%', height: '80%', format: 'png' %>
-        <p>投稿日時：<%= @pending_image.created_at %></p>
+        <ul class="nav nav-tabs nav-fill justify-content-center">
+          <li class="nav-item">
+            <a href="#post" class="nav-link active" data-toggle="tab">投稿イラスト</a>
+          </li>
+          <li class="nav-item">
+            <a href="#item" class="nav-link" data-toggle="tab">線画素材</a>
+          </li>
+        </ul>
+        <div class="tab-content">
+          <div id="post" class="tab-pane active">
+            <div id="modal-content">
+            <%= attachment_image_tag @pending_image, :image, width: '80%' %>
+            </div>
+          </div>
+          <div id="item" class="tab-pane">
+            <%= attachment_image_tag @item_image, :image, width: '80%', format: 'png' %>
+          </div>
+        </div>
       </div>
       <div class="apply_reject">
         <%= form_with model: @pending_image, url: admin_apply_path, local:true do |f| %>
