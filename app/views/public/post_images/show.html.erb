@@ -6,7 +6,7 @@
     </div>
     <div class="col-lg-9" style="background-color:white">
         <!--タイトルと説明文を表示-->
-      <h3><%= @post_image.title %></h3>
+      <h3 style="font-weight: bold;"><%= @post_image.title %></h3>
       <p><%= @post_image.img_introduction %></p>
       <p>使用した画材：<%= @post_image.art_supplies %></p>
 
@@ -36,9 +36,6 @@
           <%= link_to "削除する", public_post_image_path(@post_image.id), method: :delete, class: "btn btn-danger" , "data-confirm" => "本当にこの作品を削除しますか?" %>
         </div>
       <% end %>
-      <p>投稿日時：<%= @post_image.created_at %></p>
-      <br />
-      
       <p>AIが認識した情報：</p>
       <% @post_image.tags.each do |tag| %>
        ,<span class="label"> <%= tag.name %></span>
@@ -58,7 +55,7 @@
         <div class="tab-content">
           <div id="post" class="tab-pane active">
             <div id="modal-content">
-              <br />
+              <p>投稿日時：<%= @post_image.created_at %></p>
               <%= attachment_image_tag @post_image, :image, width: '80%', format: 'png' %>
               <br />
             </div>
