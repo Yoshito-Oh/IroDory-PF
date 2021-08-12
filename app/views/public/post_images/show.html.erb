@@ -58,13 +58,17 @@
         <div class="tab-content">
           <div id="post" class="tab-pane active">
             <div id="modal-content">
-            <%= attachment_image_tag @post_image, :image, width: '80%', format: 'png' %>
+              <br />
+              <%= attachment_image_tag @post_image, :image, width: '80%', format: 'png' %>
+              <br />
             </div>
           </div>
           <div id="item" class="tab-pane">
+            <p>※クリックで素材画像画面に飛びます。</p>
             <%= link_to public_item_image_path(@item_image.id) do %>
               <%= attachment_image_tag @item_image, :image, width: '80%', format: 'png' %>
-            <% end %>  
+            <% end %> 
+            <br />
           </div>
         </div>
 
@@ -92,9 +96,9 @@
       </div>
       <div class="this_item_list">
         <p style="text-align:center">-この素材を使用したイラスト-</p>
-        <% @post_images.each do |post_image| %>
+        <% @same_item_images.each do |post_image| %>
           <div class="aaa" style="display:inline-block;text-align:center">
-            <%= link_to public_item_image_post_image_path(post_image.id) do %>
+            <%= link_to public_item_image_post_image_path(post_image.item_image.id, post_image.id) do %>
               <%= attachment_image_tag post_image, :image, width: '200px', height: '200px', style: "object-fit:cover"  %><br />
               <%= post_image.user.nickname %>
             <% end %>
