@@ -1,7 +1,7 @@
 class Public::PostImagesController < ApplicationController
   #新着イラスト一覧表示==========================
   def index
-    @post_images = PostImage.where(status: 'true').reverse_order#.page(params[:page]).reverse_order
+    @post_images = PostImage.where(status: 'true').page(params[:page]).reverse_order#.page(params[:page]).reverse_order
     #新しく投稿されたものから表示させる
   end
   #==============================================

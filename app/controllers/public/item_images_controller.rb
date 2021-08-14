@@ -1,6 +1,6 @@
 class Public::ItemImagesController < ApplicationController
   def index
-    @item_images = ItemImage.all
+    @item_images = ItemImage.page(params[:page]).reverse_order
   end
 
   def show
