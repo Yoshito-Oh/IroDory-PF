@@ -1,4 +1,5 @@
 class Public::UsersController < ApplicationController
+  
   def show
     @user = User.find(params[:id])
     #post_image：全体で投稿された中で「current_user」でかつ「status:true」のもののみ
@@ -7,6 +8,7 @@ class Public::UsersController < ApplicationController
     @pending_images = PostImage.where(status: false,user_id: @user.id)
     @favorites = Favorite.where(user_id: @user.id)
   end
+  
   
   def edit
     @user = User.find(params[:id])
@@ -23,7 +25,7 @@ class Public::UsersController < ApplicationController
       render 'edit'
     end
   end
-  
+
   def destroy
     @user = User.find(params[:id])
     @user.destroy

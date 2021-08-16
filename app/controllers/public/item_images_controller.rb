@@ -9,7 +9,6 @@ class Public::ItemImagesController < ApplicationController
     unless current_user.nil?
       @current_user_post_image = PostImage.where(status: true).where(user_id: current_user.id)
     end
-    
   end
 
   def download
