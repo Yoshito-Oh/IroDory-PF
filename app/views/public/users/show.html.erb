@@ -1,4 +1,3 @@
-<!--プロフィールのヘッダーを入れる場所-->
 <div class="user_header" style="background-color:purple;">
   <%= attachment_image_tag(@user, :profile_header, width: '100%',height: '300px', fallback: "no_image.jpg") %>
 </div>
@@ -11,7 +10,6 @@
         <br />
         <%= @user.nickname %>
         <br />
-          <!--フォロー・フォロワー数-->
           <table class="following_list" style="text-align:center">
             <tr>
               <td>フォロー</td>

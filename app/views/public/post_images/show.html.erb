@@ -9,18 +9,9 @@
       <h3 style="font-weight: bold;"><%= @post_image.title %></h3>
       <p><%= @post_image.img_introduction %></p>
       <p>使用した画材：<%= @post_image.art_supplies %></p>
-      <div class="favorite_space">
-        <% if user_signed_in? %>
-          <% if @post_image.favorited_by?(current_user) %><!--すでにいいねしていた場合-->
-            <p>
-              <%= link_to @post_image.favorites.count, public_post_image_favorites_path(@post_image.id), method: :delete, remote: true, class: "fas fa-heart heart_red", style: "color:red" %>
-            </p>
-          <% else %><!--まだいいねしていない場合-->
-            <p>
-              <%= link_to @post_image.favorites.count, public_post_image_favorites_path(@post_image.id), method: :post, remote: true, class: "fas fa-heart heart_blue" %>
-            </p>
-          <% end %>
-        <% end %>
+      
+      <div class=<%="favorite-btn-#{@post_image.id}"%>>
+        <%= render 'public/favorites/favorite-btn', post_image: @post_image %>
       </div>
       <div class="judge_reason">
         <% if @post_image.status == false %>
@@ -35,11 +26,14 @@
           <%= link_to "削除する", public_post_image_path(@post_image.id), method: :delete, class: "btn btn-danger" , "data-confirm" => "本当にこの作品を削除しますか?" %>
         </div>
       <% end %>
-      <p>AIが認識した情報：</p>
-      <% @post_image.tags.each do |tag| %>
-       ,<span class="label"> <%= tag.name %></span>
-      <% end %>
+      <div class="API_list">
+        <p>AIが認識した情報：</p>
+        <% @post_image.tags.each do |tag| %>
+         ,<span class="label"> <%= tag.name %></span>
+        <% end %>
       <br />
+      </div>
+      
       <br />
       <% if user_signed_in? %>
       <div class="item_image" style="text-align:center">
@@ -54,7 +48,7 @@
         <div class="tab-content">
           <div id="post" class="tab-pane active">
             <div id="modal-content">
-              <p>投稿日時：<%= @post_image.created_at %></p>
+              <p style="text-align:right">投稿日時：<%= @post_image.created_at %></p>
               <%= attachment_image_tag @post_image, :image, width: '80%', format: 'png' %>
               <br />
             </div>
