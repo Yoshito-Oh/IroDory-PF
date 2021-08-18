@@ -16,6 +16,7 @@ class User < ApplicationRecord
   #アソシエーション--------------------------
   has_many :post_images, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :post_image_comments, dependent: :destroy
   #------------------------------------------
 
   #フォロー/フォロワー機能==========================================

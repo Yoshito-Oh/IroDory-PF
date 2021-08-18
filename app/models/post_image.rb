@@ -3,21 +3,22 @@ class PostImage < ApplicationRecord
 
   #バリデーション==================
   validates :title, presence: true
-  
+
   #================================
 
   #アソシエーション----------------
   belongs_to :user
   belongs_to :item_image
   has_many :favorites, dependent: :destroy
+  has_many :post_image_comments, dependent: :destroy
   #--------------------------------
-  
+
   #いいね機能--------------------------------
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
   end
   #------------------------------------------
-  
+
   #タグ検索機能の追加====================
   acts_as_taggable_on :tags, :skills
   #scope :by_join_date, order("created_at DESC")

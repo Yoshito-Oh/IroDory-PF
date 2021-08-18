@@ -9,7 +9,6 @@ class Public::UsersController < ApplicationController
     @favorites = Favorite.where(user_id: @user.id)
   end
   
-  
   def edit
     @user = User.find(params[:id])
     if @user.id != current_user.id

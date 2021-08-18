@@ -9,7 +9,7 @@
       <h3 style="font-weight: bold;"><%= @post_image.title %></h3>
       <p><%= @post_image.img_introduction %></p>
       <p>使用した画材：<%= @post_image.art_supplies %></p>
-      
+
       <div class=<%="favorite-btn-#{@post_image.id}"%>>
         <%= render 'public/favorites/favorite-btn', post_image: @post_image %>
       </div>
@@ -33,7 +33,7 @@
         <% end %>
       <br />
       </div>
-      
+
       <br />
       <% if user_signed_in? %>
       <div class="item_image" style="text-align:center">
@@ -57,18 +57,25 @@
             <p>※クリックで素材画像画面に飛びます。</p>
             <%= link_to public_item_image_path(@item_image.id) do %>
               <%= attachment_image_tag @item_image, :image, width: '80%', format: 'png' %>
-            <% end %> 
+            <% end %>
             <br />
           </div>
         </div>
-        <div class="comment_form">
-          <%#= form_with(url: public_post_image_post_image_comments_path(post_image_id: @post_image.id)) do |f| %>
-            <%#= f.text_area :comment, rows: '1',:size => "150x5" %>
-            <%#= f.submit "コメント",class: "btn btn-success" %>
-          <%# end %>
+        <br />
+        <div class="comment_form" style="text-align:center">
+          <%= form_with(url: public_post_image_post_image_comments_path(post_image_id: @post_image.id)) do |f| %>
+            <table><!--210818作業中....-->
+              <td>
+                <%= f.text_area :comment, rows: '1',:size => "75x2" %>
+              </td>
+              <td>
+                <%= f.submit "コメント",class: "btn btn-success b-radius" %>
+              </td>
+            </table>
+          <% end %>
           <!--コメント付与作業-->
         </div>
-        <%#= render 'post_image_comments/comment', post_image: @post_image %>
+        <%= render 'public/post_image_comments/comment', post_image: @post_image %>
 
       </div>
       <% else %>
@@ -76,7 +83,7 @@
         <div class="unlogin_image" style="display:inline-block;text-align:center">
           <%= attachment_image_tag @post_image, :image, width: '30%', format: 'png' %>
           <%= attachment_image_tag @item_image, :image, width: '30%', format: 'png' %>
-        </div>      
+        </div>
       <% end %>
       <div class="empty">
         <br />
