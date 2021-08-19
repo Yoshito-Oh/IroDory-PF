@@ -7,7 +7,7 @@
         </div>
         <% if @range == "投稿画像" %>
           <h6><%= @range %>一覧</h6><br />
-          <% if @post_image.blank? %>
+          <% if @word.blank? %>
             <p>検索結果はありませんでした。</p>
           <% else%>
             <% @post_image.each do |post_image| %>
@@ -23,7 +23,7 @@
           <% end %>
         <% elsif @range == "線画素材" %><!--線画素材が選択された場合-->
           <%= @range %>一覧<br />
-          <% if @item_image.blank? %>
+          <% if @word.blank? %>
             <p>検索結果はありませんでした。</p>
           <% else%>
             <% @item_image.each do |item_image| %>
@@ -36,8 +36,9 @@
             <% end %>  
           <% end %>
         <% else %><!--ユーザ検索-->
-          <%= @range %>一覧<br />
-          <% if @user.blank? %>
+          <%= @range %>一覧
+          <%= link_to "全ユーザー一覧",public_users_path, class: 'btn btn-success' %>
+          <% if @word.blank? %>
             <p>検索したユーザ名は見つかりませんでした。</p>
           <% else %>
             <table width="75%">

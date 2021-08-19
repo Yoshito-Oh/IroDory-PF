@@ -40,7 +40,7 @@ Rails.application.routes.draw do
       get 'download' => 'item_images#download'
       post 'download' => 'item_images#download'
     end
-    resources :users, only: [:show, :edit, :update, :destroy] do
+    resources :users, only: [:index, :show, :edit, :update, :destroy] do
       member do
         get :following, :follower
       end
