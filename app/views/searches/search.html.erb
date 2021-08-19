@@ -37,7 +37,7 @@
           <% end %>
         <% else %><!--ユーザ検索-->
           <%= @range %>一覧
-          <%= link_to "全ユーザー一覧",public_users_path, class: 'btn btn-success' %>
+          <%#= link_to "全ユーザー一覧",public_users_path, class: 'btn btn-success' %><!--(実装中)-->
           <% if @word.blank? %>
             <p>検索したユーザ名は見つかりませんでした。</p>
           <% else %>
