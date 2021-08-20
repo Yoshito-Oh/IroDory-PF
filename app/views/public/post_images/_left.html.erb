@@ -24,16 +24,17 @@
       </tr>
     </table>
     <% if current_user.id == user.id %>
-    <%= link_to "マイページ", public_user_path(user), class: "btn btn-outline-primary" %><br />
+      <%= link_to "マイページ", public_user_path(user), class: "btn btn-outline-primary" %><br />
     <% else %>
-      <% if current_user.following?(user) %>
-        <%= link_to "フォロー解除", public_user_relationships_path(user.id), class: 'btn btn-primary',method: :delete, remote: true %>
-      <% else %>
-        <%= link_to "フォロー", public_user_relationships_path(user.id), class: 'btn btn-outline-primary',method: :post, remote: true %>
-      <% end %>
+      <%= render 'public/relationships/follow-btn' %>
     <% end %>
   <% end %>
 </div>
+
+<div class=<%="favorite-btn-#{@post_image.id}"%>>
+  <%= render 'public/favorites/favorite-btn', post_image: @post_image %>
+</div>
+
 <div class="this_user_list" style="margin-top:30px;">
   <p>-<%= @post_image.user.nickname %>さんのイラスト-</p>
   <% @post_images.each do |post_image| %>
