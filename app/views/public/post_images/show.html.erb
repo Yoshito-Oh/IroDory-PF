@@ -79,6 +79,7 @@
 
       </div>
       <% else %>
+        <p>ログインすることで元の大きいサイズで閲覧することができます。</p>
         <p>投稿日時：<%= @post_image.created_at %></p>
         <div class="unlogin_image" style="display:inline-block;text-align:center">
           <%= attachment_image_tag @post_image, :image, width: '30%', format: 'png' %>
