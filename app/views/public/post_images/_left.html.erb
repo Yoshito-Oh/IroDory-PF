@@ -30,11 +30,6 @@
     <% end %>
   <% end %>
 </div>
-
-<div class=<%="favorite-btn-#{@post_image.id}"%>>
-  <%= render 'public/favorites/favorite-btn', post_image: @post_image %>
-</div>
-
 <div class="this_user_list" style="margin-top:30px;">
   <p>-<%= @post_image.user.nickname %>さんのイラスト-</p>
   <% @post_images.each do |post_image| %>

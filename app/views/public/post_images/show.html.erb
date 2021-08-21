@@ -63,6 +63,7 @@
         </div>
         <br />
         <div class="comment_form" style="text-align:center">
+          <p>コメント数:<%= @post_image.post_image_comments.count %></p>
           <%= form_with(url: public_post_image_post_image_comments_path(post_image_id: @post_image.id)) do |f| %>
             <table><!--210818作業中....-->
               <td>
