@@ -41,7 +41,7 @@
               <li class="nav-item"><%= link_to "承認待機一覧", admin_applies_path, class: "btn btn-outline-secondary" %></li>
               <li class="nav-item"><%= link_to "ユーザ一覧", admin_users_index_path, class: "btn btn-outline-secondary "%></li>
               <li class="nav-item"><%= link_to "素材線画一覧", admin_item_images_path, class: "btn btn-outline-secondary" %></li>
-              <li class="nav-item"><%= link_to "log-out", destroy_admin_session_path, method: :delete, class: "btn btn-danger" %></li>
+              <li class="nav-item"><%= link_to "logout", destroy_admin_session_path, method: :delete, class: "btn btn-danger" %></li>
               <li class="nav-item"><%= link_to "前の画面に戻る", 'javascript:history.back()', class: "fas fa-undo" %></li>
             </div>
           <% else %>

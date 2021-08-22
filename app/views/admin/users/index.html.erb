@@ -4,15 +4,43 @@
       <h2 style="text-align:center">会員一覧</h2>
       <% @users.each do |user| %>
         <div class="user_profile">
-          <%= link_to admin_user_path(user.id) do %>
-            <div class="user_image" style="display:inline-block">
+          <div class="user_image" style="display:inline-block">
+            <%= link_to admin_user_path(user.id) do %>  
               <%= attachment_image_tag user, :profile_image, size: "150x150", fallback: "no_image.jpg" %>
-            </div>
-            <div class="user_infomation" style="display:inline-block; padding-left:20px;">
-              <%= user.nickname %>
-              <br />
-              <%= user.introduction %>
-            </div>
+            <% end %>
+          </div>
+          <div class="user_infomation" style="display:inline-block;">
+            <table>
+              <tbody>
+                
+                <tr>
+                  <td></td>
+                  <td><%= user.nickname %></td>
+                </tr>
+                <tr>
+                  <td>フォロー:</td>
+                  <td>
+                    <%= link_to following_public_user_path(user) do %>
+                      <%= user.followings.count %>
+                    <% end %>
+                  </td>
+                </tr>
+                <tr>
+                  <td>フォロワー:</td>
+                  <td>
+                    <%= link_to follower_public_user_path(user) do %>
+                      <%= user.followers.count %>
+                    <% end %>
+                  </td>
+                </tr>
+                <tr>
+                  <td>introduction:</td>
+                  <td><%= user.introduction %></td>
+                </tr>
+              </tbody>
+            </table>
+            
+          </div>
             <div class="post_easy">
               <%# @post_images.each do |post_image| %>
                 <%#= link_to admin_apply_path(post_image.id) do %>
@@ -20,7 +48,7 @@
                 <%# end %>
               <%# end %>
             </div>
-          <% end %>
+          
         </div>
       <% end %>
     </div>
