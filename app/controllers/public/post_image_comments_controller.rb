@@ -11,8 +11,8 @@ class Public::PostImageCommentsController < ApplicationController
 
   def destroy
     @post_image = PostImage.find(params[:post_image_id])
-    post_image_comment = @post_image.post_image_comments.find(params[:id])
-    post_image_comment.destroy
+    @post_image_comment = @post_image.post_image_comments.find(params[:id])
+    @post_image_comment.destroy
   end
   
   private#ストロングパラメータ=============================================
