@@ -33,7 +33,6 @@ Rails.application.routes.draw do
     resources :post_images, only: [:index, :edit, :update, :destroy] do
       resources :post_image_comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
-      
     end
     resources :item_images, only: [:index, :show] do
       resources :post_images, only: [:new, :show, :create]

@@ -1,5 +1,6 @@
 class Public::PostImageCommentsController < ApplicationController
   def create
+    byebug
     @post_image = PostImage.find(params[:post_image_id])
     @post_image_comment = PostImageComment.new(post_image_comment_params)
     @post_image_comment.user_id = current_user.id
