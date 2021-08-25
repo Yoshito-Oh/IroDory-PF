@@ -76,7 +76,7 @@
           <% end %>
           <!--コメント付与作業-->
         </div>
-        <%= render 'public/post_image_comments/comment', post_image_comment: @post_image_comment %>
+        <%#= render 'public/post_image_comments/comment', post_image_comment: @post_image_comment %>
 
       </div>
       <% else %>
@@ -87,10 +87,7 @@
           <%= attachment_image_tag @item_image, :image, width: '30%', format: 'png' %>
         </div>
       <% end %>
-      <div class="empty">
-        <br />
-        <br />
-      </div>
+      
       <div class="this_item_list">
         <p style="text-align:center">-この素材を使用したイラスト-</p>
         <% @same_item_images.each do |post_image| %>
