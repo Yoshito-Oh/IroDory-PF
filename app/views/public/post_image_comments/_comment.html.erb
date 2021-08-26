@@ -1,21 +1,23 @@
 <table class="post_image_comment">
   <% @post_image.post_image_comments.each do |post_image_comment| %>
     <tr>
-      <td>
-        <%= link_to user_path(post_image_comment.user) do %>
-          <%= attachment_image_tag(post_image_comment.user, :profile_image, :size => "100x100", fallback: "no_image.jpg") %>
+      <td width="10%">
+        <%= link_to public_user_path(post_image_comment.user) do %>
+          <%= attachment_image_tag(post_image_comment.user, :profile_image, :size => "50x50", fallback: "no_image.jpg") %><br />
           <%= post_image_comment.user.nickname %>
         <% end %>
       </td>
-      <td>
+      <td style="text-align: left" width="70%">
         <!--コメントの表示-->
         <%= post_image_comment.comment %>
       </td>
-    </tr>
-    <tr>
-      <% if post_image_comment.user == current_user %>
-        <%= link_to 'ｺﾒﾝﾄ削除', public_post_image_comments_destroy_path(@post_image, post_image_comment), method: :delete, remote: true, class: 'btn btn-danger' %>
+      <td width="20%">
+        <% if post_image_comment.user == current_user %>
+        <%= link_to 'ｺﾒﾝﾄ削除', public_post_image_post_image_comments_path(@post_image, post_image_comment), method: :delete, remote: true, class: 'btn btn-danger' %>
       <% end %>
+      </td>
     </tr>
+    
+    <div class="comments_line"></div>
   <% end %>
 </table>
