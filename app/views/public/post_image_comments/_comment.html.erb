@@ -7,17 +7,16 @@
           <%= post_image_comment.user.nickname %>
         <% end %>
       </td>
-      <td style="text-align: left" width="70%">
+      <td style="text-align: left" width="55%">
         <!--コメントの表示-->
         <%= post_image_comment.comment %>
       </td>
-      <td width="20%">
+      <td width="15%">
         <% if post_image_comment.user == current_user %>
-        <%= link_to 'ｺﾒﾝﾄ削除', public_post_image_post_image_comments_path(@post_image, post_image_comment), method: :delete, remote: true, class: 'btn btn-danger' %>
+        <%= link_to 'ｺﾒﾝﾄ削除', public_post_image_post_image_comment_path(@post_image, post_image_comment), method: :delete, remote: true, class: 'btn btn-danger' %>
       <% end %>
       </td>
     </tr>
     
-    <div class="comments_line"></div>
   <% end %>
 </table>

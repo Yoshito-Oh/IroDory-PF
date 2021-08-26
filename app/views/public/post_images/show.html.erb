@@ -66,10 +66,10 @@
           <p>コメント数:<%= @post_image.post_image_comments.count %></p>
           <%= form_with(url: public_post_image_post_image_comments_path(post_image_id: @post_image.id)) do |f| %>
             <table><!--210818作業中....-->
-              <td>
+              <td width="65%">
                 <%= f.text_area :comment, rows: '1', :size => "75%" %>
               </td>
-              <td>
+              <td width="15%">
                 <%= f.submit "コメント",class: "btn btn-success b-radius" %>
               </td>
             </table>
@@ -87,7 +87,7 @@
           <%= attachment_image_tag @item_image, :image, width: '30%', format: 'png' %>
         </div>
       <% end %>
-      
+      <div class="comments_line"></div>
       <div class="this_item_list">
         <p style="text-align:center">-この素材を使用したイラスト-</p>
         <% @same_item_images.each do |post_image| %>
