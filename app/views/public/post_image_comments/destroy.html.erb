@@ -1,2 +1,2 @@
-<h1>Public::PostImageComments#destroy</h1>
-<p>Find me in app/views/public/post_image_comments/destroy.html.erb</p>
+$(".post_image_comments").html("<%= j(render 'post_image_comments/comment', post_image: @post_image) %>");
+$("#post_image_comment_comment").val("");
