@@ -12,7 +12,6 @@
           <div class="user_infomation" style="display:inline-block;">
             <table>
               <tbody>
-                <tr><br /></tr>
                 <tr>
                   <td></td>
                   <td><%= user.nickname %></td>
@@ -41,11 +40,11 @@
             </table>
           </div>
           <div class="post_easy">
-            <% @post_images.each do |post_image| %>
-              <%= link_to admin_apply_path(post_image.id) do %>
-                <%= attachment_image_tag post_image, :image, width: '150px', height: '150px', style: "object-fit:cover" %>
-              <% end %>
-            <% end %>
+            <%# @post_images.each do |post_image| %>
+              <%#= link_to admin_apply_path(post_image.id) do %>
+                <%#= attachment_image_tag post_image, :image, width: '150px', height: '150px', style: "object-fit:cover" %>
+              <%# end %>
+            <%# end %>
           </div>
         </div>
       <% end %>
