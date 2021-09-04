@@ -31,11 +31,10 @@
         <% @post_image.tags.each do |tag| %>
          ,<span class="label"> <%= tag.name %></span>
         <% end %>
-      <br />
+        <br />
       </div>
-
       <br />
-      <% if user_signed_in? %>
+      <% if user_signed_in? %><!--ユーザー登録ができていた場合-->
       <div class="item_image" style="text-align:center">
         <ul class="nav nav-tabs nav-fill justify-content-center">
           <li class="nav-item">
@@ -77,7 +76,7 @@
         </div>
         <%= render 'public/post_image_comments/comment', post_image_comment: @post_image_comment %>
       </div>
-      <% else %>
+      <% else %><!--ユーザ登録ができていない場合-->
         <p>ログインすることで元の大きいサイズで閲覧することができます。</p>
         <p>投稿日時：<%= @post_image.created_at %></p>
         <div class="unlogin_image" style="display:inline-block;text-align:center">
